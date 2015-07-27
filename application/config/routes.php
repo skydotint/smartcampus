@@ -58,6 +58,7 @@ $route['dashboard'] = 'auth/dashboard';
 
 // About Idea Tweaker
 $route['aboutideatweaker'] = 'ideatweaker/index';
+$route['aboutsmart'] = 'ideatweaker/aboutsmartcampus';
 
 // System Settings
 $route['systemsettings'] = 'settings/index';

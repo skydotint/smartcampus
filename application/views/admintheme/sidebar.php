@@ -21,10 +21,6 @@
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewstudents"><i class="icon-globe"></i> Current Students</a></li>
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewxstudents"><i class="icon-globe"></i> X Students</a></li>
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewallstudents"><i class="icon-globe"></i> All Students</a></li>
-                            <li class="divider"></li>
-                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewtcs"><i class="icon-globe"></i> CharPatro Requests</a></li>
-                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>"><i class="icon-globe"></i> ProsongshaPatro Requests</a></li>
-                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>"><i class="icon-globe"></i> Testimonial Requests</a></li>
                         </ul>
                     </li>
                     <li class="panel">
@@ -68,14 +64,14 @@
                     <li class="panel">
                         <a data-toggle="collapse" data-parent="#accordion1" href="#results"><i class="icon-globe"></i> Results</a>
                         <ul id="results" class="nav nav-list collapse">
-						
-						<li><a data-parent="#accordion1" href="<?php echo base_url(); ?>generateresults"><i class="icon-bell"></i>Generate Results</a></li>
+
+                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>generateresults"><i class="icon-bell"></i>Generate Results</a></li>
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>addresults"><i class="icon-glass"></i> Add/Edit Results</a></li>
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewresults"><i class="icon-glass"></i> View Results</a></li>
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>addnewothersresult"><i class="icon-globe"></i> Add Others Results</a></li>
-							<li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewothersresults"><i class="icon-globe"></i> Others Resultss</a></li>
-                            
-						</ul>
+                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewothersresults"><i class="icon-globe"></i> Others Resultss</a></li>
+
+                        </ul>
                     </li>
                     <li class="panel">
                         <a data-toggle="collapse" data-parent="#accordion1" href="#accountsLink"><i class="icon-globe"></i> Accounts & Finance</a>
@@ -124,8 +120,8 @@
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewnews"><i class="icon-globe"></i> All News</a></li>
                         </ul>
                     </li>
-					
-					<li class="panel">
+
+                    <li class="panel">
                         <a data-toggle="collapse" data-parent="#accordion1" href="#departmentLink"><i class="icon-globe"></i> Department</a>
 
                         <ul id="departmentLink" class="nav nav-list collapse">
@@ -133,7 +129,7 @@
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewdepartments"><i class="icon-globe"></i> All Department</a></li>
                         </ul>
                     </li>
-					
+
                     <li class="panel">
                         <a data-toggle="collapse" data-parent="#accordion1" href="#downloadLink"><i class="icon-globe"></i> Download</a>
 
@@ -142,7 +138,7 @@
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewdownloads"><i class="icon-globe"></i> All Downloads</a></li>
                         </ul>
                     </li>
-					<li class="panel">
+                    <li class="panel">
                         <a data-toggle="collapse" data-parent="#accordion1" href="#talentedstudentsLink"><i class="icon-globe"></i>Talented Students</a>
 
                         <ul id="talentedstudentsLink" class="nav nav-list collapse">
@@ -150,8 +146,8 @@
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewtalentedstudents"><i class="icon-globe"></i> All Talented Students</a></li>
                         </ul>
                     </li>
-					
-					<li class="panel">
+
+                    <li class="panel">
                         <a data-toggle="collapse" data-parent="#accordion1" href="#academiccouncillorsLink"><i class="icon-globe"></i>Academic Councillors</a>
 
                         <ul id="academiccouncillorsLink" class="nav nav-list collapse">
@@ -159,8 +155,8 @@
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewacademiccouncillors"><i class="icon-globe"></i> All Academic Councillors</a></li>
                         </ul>
                     </li>
-					
-					<li class="panel">
+
+                    <li class="panel">
                         <a data-toggle="collapse" data-parent="#accordion1" href="#syllabussLink"><i class="icon-globe"></i>Syllabus</a>
 
                         <ul id="syllabussLink" class="nav nav-list collapse">
@@ -168,7 +164,7 @@
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewsyllabuss"><i class="icon-globe"></i> All Syllabus</a></li>
                         </ul>
                     </li>
-					
+
                     <li class="panel">
                         <a data-toggle="collapse" data-parent="#accordion1" href="#othersLink"><i class="icon-globe"></i> Others</a>
 
@@ -181,12 +177,12 @@
                             <li class="divider"></li>
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>addnewnotice"><i class="icon-globe"></i> Add Notice</a></li>
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewnotices"><i class="icon-globe"></i> Notices</a></li>
-                            
-							<li class="divider"></li>
+
+                            <li class="divider"></li>
                             <li><a data-parent="#accordion1" href="#othersLink"><i class="icon-globe"></i> Academic Calendar</a></li>
                         </ul>
                     </li>
-					<li class="panel">
+                    <li class="panel">
                         <a data-toggle="collapse" data-parent="#accordion1" href="#slideLink"><i class="icon-globe"></i> Slideshow</a>
 
                         <ul id="slideLink" class="nav nav-list collapse">
@@ -194,20 +190,20 @@
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewslides"><i class="icon-globe"></i> All Slides</a></li>
                         </ul>
                     </li>
-					
-					<li class="panel">
-                        <a data-toggle="collapse" data-parent="#accordion1" href="#tcLink"><i class="icon-globe"></i> TC</a>
+
+                    <li class="panel">
+                        <a data-toggle="collapse" data-parent="#accordion1" href="#tcLink"><i class="icon-globe"></i> Requests</a>
 
                         <ul id="tcLink" class="nav nav-list collapse">
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>addnewtc"><i class="icon-globe"></i> Add New Request</a></li>
-                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewtcs"><i class="icon-globe"></i> Request Tc</a></li>
-                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewtestimonials"><i class="icon-globe"></i> Request Testimonial</a></li>
-                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewprottoyans"><i class="icon-globe"></i> Request Prottoyans</a></li>
-                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewtotlists"><i class="icon-globe"></i> Request Totlist</a></li>
+                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewtcs"><i class="icon-globe"></i> Transfer Certificate</a></li>
+                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewtestimonials"><i class="icon-globe"></i> Testimonial</a></li>
+                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewprottoyans"><i class="icon-globe"></i> Attestation</a></li>
+                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewtotlists"><i class="icon-globe"></i> Totlist</a></li>
                             <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewprevious"><i class="icon-globe"></i>Previous Requests</a></li>
                         </ul>
                     </li>
-					
+
                 </ul>
             </div>
         </div>

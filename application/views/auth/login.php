@@ -16,7 +16,12 @@
             <div id="infoMessage"><?php echo $message; ?></div>
 
             <?php echo form_open("auth/login", array('class' => 'form-signin')); ?>
-            <h3><?php echo lang('login_heading'); ?></h3>
+            <?php if(isset($title)) { ?>
+                <center><img src="<?php echo $title; ?>" alt="Samrat Campus" /></center>
+                <br/><br/>
+            <?php } else { ?>
+                <h3><?php echo lang('login_heading'); ?></h3>
+            <?php } ?>
             <p><?php echo lang('login_subheading'); ?></p>
             <p>
                 <?php echo lang('login_identity_label', 'identity'); ?>
@@ -34,7 +39,7 @@
             
             <p><a href="forgot_password"><?php echo lang('login_forgot_password'); ?></a></p>
 
-            <p><?php echo form_submit('submit', lang('login_submit_btn')); ?></p>
+            <p><?php echo form_submit('submit', lang('login_submit_btn'), "class='btn btn-primary'"); ?></p>
 
             <?php echo form_close(); ?>
 

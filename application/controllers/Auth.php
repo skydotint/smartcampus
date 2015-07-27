@@ -21,19 +21,21 @@ class Auth extends CI_Controller {
         if (!$this->ion_auth->logged_in()) {
             //redirect them to the login page
             redirect('auth/login', 'refresh');
-        } elseif (!$this->ion_auth->is_admin()) { //remove this elseif if you want to enable this for non-admins
+        } elseif (!$this->ion_auth->is_admin()) {
+            //remove this elseif if you want to enable this for non-admins
             //redirect them to the home page because they must be an administrator to view this
             return show_error('You must be an administrator to view this page.');
         } else {
             //set the flash data error message if there is one
+            $this->data['user'] = $this->ion_auth->user()->row();
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-
+            
             //list the users
             $this->data['users'] = $this->ion_auth->users()->result();
             foreach ($this->data['users'] as $k => $user) {
                 $this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
             }
-
+            $this->_render_page('admintheme/header', $this->data);
             $this->_render_page('auth/dashboard', $this->data);
         }
     }
@@ -58,7 +60,7 @@ class Auth extends CI_Controller {
 
     //log the user in
     function login() {
-        $this->data['title'] = "Smart Campus Login";
+        $this->data['title'] = base_url() . 'assets/images/logo.png';
 
         //validate form input
         $this->form_validation->set_rules('identity', 'Identity', 'required');

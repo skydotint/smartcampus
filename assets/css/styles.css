@@ -42,7 +42,7 @@ body {
     margin-bottom: 15px;
     padding: 7px 9px;
 }
-
+.navbar .nav > li > a { padding: 20px 20px; }
 /** 2 level sub menu **/
 .dropdown-menu-with-subs .sub-menu {
     left: 100%;
