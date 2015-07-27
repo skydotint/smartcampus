@@ -55,6 +55,9 @@ $route['outlet'] = 'auth/login';
 $route['login'] = 'auth/login';
 $route['logout'] = 'auth/logout';
 $route['dashboard'] = 'auth/dashboard';
+$route['addsysuser'] = 'auth/create_user';
+$route['users'] = 'auth/index';
+$route['profile'] = 'auth/profile';
 
 // About Idea Tweaker
 $route['aboutideatweaker'] = 'ideatweaker/index';

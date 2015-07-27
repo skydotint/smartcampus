@@ -1,5 +1,4 @@
-<?php $this->load->view('admintheme/header'); ?>
-<?php $this->load->view('admintheme/sidebar'); ?>
+
 <div class="block">
     <div class="navbar navbar-inner block-header">
         <div class="muted pull-left"><?php echo lang('index_heading'); ?></div>
@@ -39,4 +38,3 @@
 </div>
 <!-- /block -->
 <p><?php echo anchor('auth/create_user', lang('index_create_user_link')) ?> | <?php echo anchor('auth/create_group', lang('index_create_group_link')) ?></p>
-<?php $this->load->view('admintheme/footer'); ?>

@@ -30,10 +30,13 @@
                                     <i class="caret"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>
-                                        <a tabindex="-1" href="profile"><i class="icon-user"></i> Profile</a>
-                                    </li>
+                                    <li><a tabindex="-1" href="profile"><i class="icon-user"></i> Profile</a></li>
                                     <li class="divider"></li>
+                                    <?php if ($this->ion_auth->in_group("Admin")) { ?>
+                                    <li><a tabindex="-1" href="<?php echo base_url(); ?>addsysuser"><i class="icon-user"></i> Create User</a></li>
+                                    <li><a tabindex="-1" href="<?php echo base_url(); ?>auth/deactivate"><i class="icon-user"></i> Deactivated User</a></li>
+                                    <li class="divider"></li>
+                                    <?php } ?>
                                     <li>
                                         <a tabindex="-1" href="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
                                     </li>
