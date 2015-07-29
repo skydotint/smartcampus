@@ -27,18 +27,25 @@ font-family: "kalpurush",sans-serif;
     bottom: 0;
     position: absolute;
 }
+.sf-menu li:hover, .sf-menu li.sfHover { background: #003A6A; }
 .sf-menu {
     margin-bottom: 0;
+    display: table;
+    width: 89.7%;
 }
+.sf-menu > li { float: inherit; display: table-cell; }
 .sf-menu li {
     background: #004884 none repeat scroll 0 0;
+    
 }
-.sf-menu a {
+.sf-menu > li > ul { margin-left: 0px; }
+.sf-menu > li a {
     border-left: 1px solid #00569d;
     border-top: 1px solid #00569d;
     color: #fff;
     padding: 0.5em 1em;
 }
+ul.sf-menu li ul li a:hover { border-left: 0px solid #000; }
 .footer {
     background: #003a6a none repeat scroll 0 0;
     border-bottom: 2px solid #fecd0b;
@@ -58,6 +65,7 @@ ul.sf-menu li ul li:first-child {
     border-top: 4px solid #fdcd0b;
 }
 ul.sf-menu li ul li a {
+    border-left: 0px solid #000;
     background: #003a6a none repeat scroll 0 0;
 }
 ul li {
@@ -978,5 +986,3 @@ color: #003a6a;
 .fa { font-size: 13px!important; float: left; margin-top: 3px; }
 .leftMenu ul li { line-height:25px;}
 .impLinksWrap ul li { line-height:25px;}
-
-
