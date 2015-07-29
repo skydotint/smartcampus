@@ -33,7 +33,7 @@
             <div class="row margin15">
                 <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
                     <div class="headmasterQuote">
-                        <h1 class="blue">প্রধান শিক্ষকের বাণী</h1>
+                        <h1 class="blue">প্রতিষ্ঠান প্রধানের বার্তা - (<?php echo $setting['adminname']; ?>)</h1>
                         <div class="clear"></div>
 
                         <p>
@@ -42,8 +42,8 @@
 							//echo $setting['headmessage'];
 							$settingsid=$setting['settingsid'];
 							$string = $setting['headmessage'];
-								if (strlen($string) > 2000) {
-								$trimstring = substr($string, 0, 2000). ' <a href="page/messageofheadteacher">বিস্তারিত...</a>';
+								if (strlen($string) > 1800) {
+								$trimstring = substr($string, 0, 1800). ' <a href="page/messageofheadteacher">বিস্তারিত...</a>';
 								} else {
 								$trimstring = $string;
 								}
@@ -57,13 +57,13 @@
                         <div class="firstColumn">
                             <h4 style="background: #278AF0">প্রয়োজনীয় লিঙ্কস (অন সাইট)</h4>
                             <ul>
-								 <?php echo $setting['importantlinks']; ?>
+				<?php echo $setting['importantlinks']; ?>
                             </ul>
                         </div>
                         <div class="secondColumn">
                             <h4 style="background: #7AB700">প্রয়োজনীয় লিঙ্কস (অফ সাইট)</h4>
                             <ul>
-							 <?php echo $setting['importantlinksoffsite']; ?>
+				<?php echo $setting['importantlinksoffsite']; ?>
                             </ul>
                         </div>
                     </div>

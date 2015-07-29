@@ -112,7 +112,7 @@ class Auth extends CI_Controller {
 
         //redirect them to the login page
         $this->session->set_flashdata('message', $this->ion_auth->messages());
-        redirect('login', 'refresh');
+        redirect('', 'refresh');
     }
 
     //change password
@@ -715,5 +715,5 @@ class Auth extends CI_Controller {
         if (!$render)
             return $view_html;
     }
-
+	
 }

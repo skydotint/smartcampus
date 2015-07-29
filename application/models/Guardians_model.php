@@ -21,5 +21,6 @@ class Guardians_model extends Common_model {
         $row = $this->common_model->getRecords($this->common_model->_guardianof, $where, $all);
         return $row;
     }
+	
 
 }

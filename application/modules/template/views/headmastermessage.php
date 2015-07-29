@@ -7,9 +7,9 @@
 						<div id="successmsg" class="alert alert-success" style="display: none;"></div>
 						<div id="errormsg" class="alert alert alert-error" style="display: none;"></div>
 					</div>
-					<h1 class="blue">প্রধান শিক্ষকের বানী</h1>
+					<h1 class="blue">প্রতিষ্ঠান প্রধানের বার্তা <?php echo $settings['adminname']; ?></h1>
 					
-    					<?php foreach($settings as $headmastermesg){ ?>
+    					<?php foreach($settings as $headmastermesg) { ?>
 						<img src="<?php echo base_url(); ?>uploads/settings/<?php echo $headmastermesg['headteacherphoto']; ?>" />
 						<?php echo $headmastermesg['headmessage']; ?>
 						<?php } ?>

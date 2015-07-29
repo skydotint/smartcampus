@@ -21,7 +21,7 @@ class Classroutine extends CI_Controller {
 
     public function addroutine() {
         $this->data['title'] = "Add Routine";
-        $this->data['classes'] = $this->classes_model->getClasses();
+        $this->data['classes'] = $this->classes_model->getClassess();
         $this->data['sections'] = $this->sections_model->getSections();
         $this->data['teachers'] = $this->teachers_model->getTeachers();
         $this->data['subjects'] = $this->subjects_model->getSubjects();
@@ -56,7 +56,7 @@ class Classroutine extends CI_Controller {
     }
 
     public function viewroutine() {
-        $this->data['classes'] = $this->classes_model->getClasses();
+        $this->data['classes'] = $this->classes_model->getClassess();
         $this->data['user'] = $this->ion_auth->user()->row();
         //$this->data['r'] = $this->subjects_model->getRoutines();
         $this->data['title'] = "View Routine";
@@ -65,6 +65,63 @@ class Classroutine extends CI_Controller {
         $this->load->view('classes/viewroutine', $this->data);
         $this->load->view('admintheme/footer');
     }
+	
+	public function viewclassroutine() {
+		error_reporting(0);
+        $this->data['classes'] = $this->classes_model->getClassess();
+        $this->data['user'] = $this->ion_auth->user()->row();
+		$this->id = $this->data['user']->id;
+        $this->where = array('studentuserid' => $this->id);
+        $this->data['students'] = $this->common_model->getRecords($this->common_model->_students, $this->where, 's');
+		//print_r($this->data['user']);
+		//print_r($this->data['students']);
+		//print_r($this->data['user']->id);
+		//print_r($this->data['students']['class']);
+		/*
+        $id = $this->data['students']['class'];
+        $where = array('class' => $id);
+		$this->data['routines'] = $this->common_model->getAllRecordsWhere($this->common_model->_classroutine, $join, $where, all); */
+        $this->classid = $this->data['students']['class'];
+		$where = array('class' => $this->classid);
+        $join = $this->db->join('classdays', 'classroutine.days = classdays.dayid');
+        $join = $this->db->join('classperiod', 'classroutine.period = classperiod.classperiodid');
+        $join = $this->db->join('sections', 'classroutine.section = sections.sectionid');
+        $join = $this->db->join('study_groups', 'classroutine.stdgroup = study_groups.studygroupsid');
+        $join = $this->db->join('teachers', 'classroutine.teachers = teachers.teacherid');
+        $join = $this->db->join('subjects', 'classroutine.subjects = subjects.subjectid');
+        $this->data['routines'] = $this->subjects_model->viewRoutine($this->subjects_model->_classroutine, $join, $where, all);
+        //$success = $this->students_model->allRoutines();
+        //echo json_encode(array('success' => $success));
+		$this->data['title'] = "View Routine";
+        $this->load->view('admintheme/header', $this->data);
+        $this->load->view('admintheme/sidebar');
+        $this->load->view('classes/viewclassroutine', $this->data);
+        $this->load->view('admintheme/footer');
+    }
+	
+	public function classroutines() {
+		error_reporting(0);
+        $this->data['classes'] = $this->classes_model->getClassess();
+        $this->data['user'] = $this->ion_auth->user()->row();
+		$this->id = $this->data['user']->id;
+        $this->where = array('studguardianid' => $this->id);
+        $this->data['students'] = $this->common_model->getRecords($this->common_model->_students, $this->where, 's');
+        $this->classid = $this->data['students']['class'];
+		$where = array('class' => $this->classid);
+        $join = $this->db->join('classdays', 'classroutine.days = classdays.dayid');
+        $join = $this->db->join('classperiod', 'classroutine.period = classperiod.classperiodid');
+        $join = $this->db->join('sections', 'classroutine.section = sections.sectionid');
+        $join = $this->db->join('study_groups', 'classroutine.stdgroup = study_groups.studygroupsid');
+        $join = $this->db->join('teachers', 'classroutine.teachers = teachers.teacherid');
+        $join = $this->db->join('subjects', 'classroutine.subjects = subjects.subjectid');
+        $this->data['routines'] = $this->subjects_model->viewRoutine($this->subjects_model->_classroutine, $join, $where, all);
+		$this->data['title'] = "View Routine";
+        $this->load->view('admintheme/header', $this->data);
+        $this->load->view('admintheme/sidebar');
+        $this->load->view('classes/viewclassroutine', $this->data);
+        $this->load->view('admintheme/footer');
+    }
+	
 
     public function routineajax() {
         error_reporting(0);
@@ -76,6 +133,7 @@ class Classroutine extends CI_Controller {
             'days' => $this->input->post('days', true),
             'teachers' => $this->input->post('teachers', true),
             'subjects' => $this->input->post('subjects', true),
+            'classtime' => $this->input->post('classtime', true),
             'isActive' => 1
         );
         $this->results = $this->common_model->insertRecords($this->common_model->_classroutine, $this->records);
@@ -99,6 +157,7 @@ class Classroutine extends CI_Controller {
             'days' => $this->input->post('days', true),
             'teachers' => $this->input->post('teachers', true),
             'subjects' => $this->input->post('subjects', true),
+            'classtime' => $this->input->post('classtime', true),
             'isActive' => 1
         );
         $this->id = $this->input->post('classroutineid', true);

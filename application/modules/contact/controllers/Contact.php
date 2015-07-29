@@ -45,61 +45,38 @@ class Contact extends MX_Controller {
 
     function contactajax() {
         error_reporting(0);
-$config = array();
-        $config['useragent']           = "CodeIgniter";
-        $config['mailpath']            = "/usr/bin/sendmail"; // or "/usr/sbin/sendmail"
-        $config['protocol']            = "smtp";
-        $config['smtp_host']           = "localhost";
-        $config['smtp_port']           = "25";
-        $config['mailtype'] = 'html';
-        $config['charset']  = 'utf-8';
-        $config['newline']  = "\r\n";
-        $config['wordwrap'] = TRUE;
 
+		$data['settings'] = $this->settings_model->getSettings();
+		$ad = $data['settings'][0];
+		$instituteemail = $ad['instituteemail'];
         $fullname = $this->input->post('fullname', true);
         $mobileno = $this->input->post('mobileno', true);
         $email = $this->input->post('email', true);
         $subject = $this->input->post('subject', true);
         $message = $this->input->post('message', true);
 
-        $msg = "Contact Number:" . $mobileno . "\n" . "Message:" . $message;
-        $receiverEmail = "dev.saddam@gmail.com";
+        $msg = "Name:" . $fullname . "\n"."Contact Number:" . $mobileno . "\n" . "Message:" . $message;
+        //$receiverEmail = "dev.saddam@gmail.com";
+		
+		
+		//$to = "dev.saddam@gmail.com";
+		$to = $instituteemail;
+		//$subject = "Test mail";
+		if($subject){
+			$subject = $subject;
+		}else{
+			$subject = "Contact Form";
+		}
+		//$message = "Hello! This is a simple email message.";
+		$message = $msg;
+		//$from = "dev.saddam25@gmail.com";
+		$from = $email;
+		$headers = "From:" . $from;
+		$send = @mail($to,$subject,$message,$headers);
 
-        $this->load->library('email');
-		$this->email->initialize($config);
-        $this->email->from($email, $fullname);
-        $this->email->to($receiver);
-        
-        if ($subject) {
-            $subject = $this->email->subject($subject);
-        } else {
-            $subject = $this->email->subject('Contact Form');
-        }
-  
-        $this->email->message($msg);
-        $send = $this->email->send();
-
-
-	$to = $receiverEmail;
-	if($subject){
-		$subject = $subject;
-	}else{
-		$subject = "Contact Form";
-	}
-	$message = $msg;
-	$from = $email;
-	$headers = "From:" . $from;
-	$send = @mail($to,$subject,$message,$headers);
-
-/*$to = "dev.saddam@gmail.com";
-$subject = "Test mail";
-$message = "Hello! This is a simple email message.";
-$from = "dev.saddam@gmail.com";
-$headers = "From:" . $from;
-$send = @mail($to,$subject,$message,$headers);*/
         if ($send) {
             $this->status['status'] = 1;
-            $this->status['msg'] = "Thank you for contact with us.";
+            $this->status['msg'] = "আমাদের সাথে যোগাযোগ করার জন্য আপনাকে ধন্যবাদ";
         } else {
             $this->status['status'] = 0;
             $this->status['msg'] = "Something went wrong sending contact information.";

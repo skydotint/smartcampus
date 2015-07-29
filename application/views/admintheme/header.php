@@ -11,6 +11,7 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <script src="assets/js/raphael-min.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     </head>
 
     <body>
@@ -30,7 +31,7 @@
                                     <i class="caret"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a tabindex="-1" href="profile"><i class="icon-user"></i> Profile</a></li>
+                                    <li><a tabindex="-1" href="<?php echo base_url(); ?>viewprofile"><i class="icon-user"></i> Profile</a></li>
                                     <li class="divider"></li>
                                     <?php if ($this->ion_auth->in_group("Admin")) { ?>
                                     <li><a tabindex="-1" href="<?php echo base_url(); ?>addsysuser"><i class="icon-user"></i> Create User</a></li>

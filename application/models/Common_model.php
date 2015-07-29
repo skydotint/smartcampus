@@ -47,6 +47,7 @@ class Common_model extends CI_Model {
     public $_tcs = 'tcs';
 	public $_counter_ips = 'counter_ips';
     public $_counter_values = 'counter_values';
+    public $_users_groups = 'users_groups';
 
     /**
      * @package:EasyTask
@@ -98,7 +99,20 @@ class Common_model extends CI_Model {
         return $this->db->count_all($table);
     }
 
-    public function getRecordsWithPager($table, $limit, $start) {
+    public function getRecordsLimit($table, $limit, $start) {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get($table);
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+    }
+	
+	public function getRecordsWithPager($table, $limit, $start) {
         $this->db->limit($limit, $start);
         $query = $this->db->get($table);
 
@@ -138,6 +152,7 @@ class Common_model extends CI_Model {
             return false;
 
     }
+	
 
     /**
      * @Common_model::updateRecords()

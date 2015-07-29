@@ -61,6 +61,39 @@ class Attendance_model extends Common_model {
         } else
             return false;
     }
+    
+    public function viewAbsenceList($table, $join, $where, $option) {
+        if (!empty($where))
+            $sql = $this->db->get_where($table, $where);
+        else
+            $sql = $this->db->get($table);
+        if ($sql->num_rows() > 0) {
+            if ($option == "all") {
+                foreach ($sql->result() as $rows) {
+                    $data.="
+                <tr>
+                    <td>" . $rows->studentid . "</td>
+                    <td>" . $rows->firstname." ".$rows->middlename ." " .$rows->lastname."</td>
+                    <td>" . $rows->sf_phone . "</td>
+                    
+                </tr>";
+                }
+            } else {
+                $data = $sql->row_array();
+            }
+            $datastart = "<form id='sendnotification' name='sendnotification' action=''  class='sendnotification'><table class='table table-striped table-bordered dataTable'>
+                <tbody>
+                    <tr>
+                        <th>StudentID</th>
+                        <th>Student Name</th>
+                        <th>Guardians Contact</th>
+                    </tr>";
+            $dataend = "</tbody></table></form>";
+            $datafinal = $datastart . $data . $dataend;
+            return $datafinal;
+        } else
+            return false;
+    }
 
     public function getStudentsForAbsenceNew($table, $join, $where, $option) {
         if (!empty($where))

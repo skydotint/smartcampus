@@ -23,8 +23,8 @@
 				<ul>
 				<?php foreach($downloads as $download) { ?>	
 				<li>
-				<span class="glyphicon glyphicon-menu-right"></span>
-				<a target="_blank" href="<?php echo base_url(); ?>uploads/downloads/<?php echo $download['attachment']; ?>"><?php echo $download['downloadtitle']; ?></a>
+				<i class="fa fa fa-angle-right"></i>&nbsp;
+				<a target="_blank" href="<?php echo base_url(); ?>uploads/downloads/<?php echo $download['attachment']; ?>"> <?php echo $download['downloadtitle']; ?></a>
 				</li>	
 				<?php } ?>
 				</ul>
@@ -36,8 +36,8 @@
 				<ul>
 				<?php foreach($notices as $notice) { ?>	
 				<li>
-				<span class="glyphicon glyphicon-menu-right"></span>
-				<a href="<?php echo base_url(); ?>notice/<?php echo $notice['noticeid']; ?>"><?php echo $notice['noticetitle']; ?></a>
+				<i class="fa fa fa-angle-right"></i>&nbsp;
+				<a href="<?php echo base_url(); ?>notice/<?php echo $notice['noticeid']; ?>"> <?php echo $notice['noticetitle']; ?></a>
 				</li>	
 				<?php } ?>
 				</ul>

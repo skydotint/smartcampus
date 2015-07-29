@@ -55,8 +55,8 @@
                                     </div>
                                     <div class="stdnInfoRight">
                                         <p class="name"><?php echo $sinstudent->firstname; ?></p>
-                                        <p class="roll">রোল নং : <?php echo $sinstudent->classroll; ?></p>
-                                        <p class="roll">লিঙ্গ : <?php echo $sinstudent->gender; ?></p>
+                                        <p class="roll">রোলঃ <?php echo $sinstudent->classroll; ?></p>
+                                        <p class="roll">লিঙ্গঃ <?php echo $sinstudent->gender; ?></p>
                                     </div>
                                     <div class="viewDetails">
                                         <a href="<?php echo base_url(); ?>studentinfo/<?php echo $sinstudent->studentid; ?>">বিস্তারিত</a>

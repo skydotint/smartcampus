@@ -129,6 +129,12 @@
                                                 </select>
                                             </div>
                                         </div> 
+										<div class="control-group">
+											<label class="control-label" for="focusedInput">Class Time</label>
+											<div class="controls">
+												<input class="input-xlarge focused" name="classtime" type="text">
+											</div>
+										</div>
                                         <input id="addroutinenew_<?php echo $calid ?>" name="addroutinenew" type="submit" class="btn btn-primary" value="Save Changes" />
                                         <button type="reset" class="btn">Cancel</button>
                                     </fieldset>

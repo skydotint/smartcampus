@@ -6,11 +6,11 @@
     </div>
     <div class="schooHeader">
         <div class="schoolLogo">
-            <?php echo settingsImg($setting['institutelogo']); ?>
+            <?php //echo settingsImg($setting['institutelogo']); ?>
         </div>
         <div class="schoolName">
-            <h3 style="font-size:22px;"><?php echo $setting['institutename']; ?></h3>
-            <p><span><?php echo $setting['slogan']; ?></span><br /><br />
+            <h3 class="schoolnamesize"><?php echo $setting['institutename']; ?></h3>
+            <p><span><?php echo $setting['slogan']; ?></span><br />
             <span><a class="btn btn-default btn-sm" href="<?php base_url() ?>gallery">গ্যালারী</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-default btn-sm" href="<?php base_url() ?>contact">যোগাযোগ</a></span></p>
         </div>
         <div class="clear"></div>

@@ -36,9 +36,9 @@ foreach ($webpages as $page) {
 			<li><a href="<?php echo base_url(); ?>academiccouncill">পরিচালনা পর্ষদ</a></li>
             <li><a href="<?php echo base_url(); ?>page/rules">প্রতিষ্ঠানের নিয়ম শৃঙ্খলা</a></li>
             <li><a href="<?php echo base_url(); ?>page/masterplan">মাস্টারপ্ল্যান</a></li>
-			<li><a href="<?php echo base_url(); ?>page/vacancy">শুন্যপদের তথ্য</a></li>
+	    <li><a href="<?php echo base_url(); ?>page/vacancy">শূন্যপদের তথ্য</a></li>
             <li><a href="<?php echo base_url(); ?>page/workingmanpower">কর্মরত জনবল</a></li>
-            <li><a href="<?php echo base_url(); ?>page/teachersandstaffvacancy">শিক্ষক ও কর্মচারীদের সৃষ্টপদ </a></li>
+            <li><a href="<?php echo base_url(); ?>page/teachersandstaffvacancy">শিক্ষক ও কর্মচারীদের সৃষ্টপদ</a></li>
         </ul>
     </li>
     <li><a href="<?php echo base_url(); ?>page/About-Us">আমাদের কথা</a>

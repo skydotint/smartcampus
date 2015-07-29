@@ -30,9 +30,12 @@ class Visitorcounter extends MX_Controller {
         $counter_agent = $_SERVER['HTTP_USER_AGENT'];
         $counter_ip = $_SERVER['REMOTE_ADDR'];
         $counter_time = time();
+        //$now = NOW();
+        $now = date("Y-m-d H:i:s", NOW());
+        //echo $now;
         $counter_connected = true;
         if ($counter_connected == true) {
-            $ignore = false;
+            $ignore = 0;
             $firstcount = $this->common_model->recordCount($this->common_model->_counter_values);
             if ($firstcount == 0) {
                 $this->records = array(
@@ -48,12 +51,12 @@ class Visitorcounter extends MX_Controller {
                     'year_id' => date("Y"),
                     'year_value' => 1,
                     'all_value' => 1,
-                    'record_date' => NOW(),
+                    'record_date' => $now,
                     'record_value' => 1
                 );
 
                 $this->results = $this->common_model->insertRecords($this->common_model->_counter_values, $this->records);
-                $ignore = true;
+                $ignore = 1;
             } 
             
             //echo NOW();
@@ -71,48 +74,63 @@ class Visitorcounter extends MX_Controller {
             $all_value = $row['all_value'];
             $record_date = $row['record_date'];
             $record_value = $row['record_value'];
-
+            //echo $record_value;
            // echo "asd";
+            //print_r($counter_ignore_agents);
+            //echo $ignore;
+            
             
             $length = sizeof($counter_ignore_agents);
             for ($i = 0; $i < $length; $i++) {
                 if (substr_count($counter_agent, strtolower($counter_ignore_agents[$i]))) {
-                    $ignore = true;
+                    $ignore = 1;
                     break;
                 }
             }
-
+            
+            
+            
+            //print_r($ignore);
+            
             $length = sizeof($counter_ignore_ips);
             for ($i = 0; $i < $length; $i++) {
                 if ($counter_ip == $counter_ignore_ips[$i]) {
-                    $ignore = true;
+                    $ignore = 1;
                     break;
                 }
             }
+            
+            
+            //echo $ignore;
 
-
-            if($ignore == false) {
+            /*if($ignore == 0) {
                 $sql = "DELETE FROM counter_ips WHERE unix_timestamp(NOW())-unix_timestamp(visit) >= $counter_expire";
+                echo $sql;
                 $this->db->query($sql);
-            }
+            }*/
 
-            if($ignore == false) {
-                //echo "asd";
+            if($ignore == 0) {
+                //echo $ignore;
                 $this->where = array('ip' => $counter_ip);
-                $this->records = array('visit' => NOW());
+                $this->records = array('visit' => $now);
                 $this->results = $this->common_model->updateRecords($this->common_model->_counter_ips, $this->records, $this->where);
-                if ($this->results) {
-                    $ignore = true;
+                $afftectedRows = $this->db->affected_rows();
+                //print_r($afftectedRows);
+                //echo $afftectedRows;
+                if ($afftectedRows > 0) {
+                    $ignore = 1;
                 } else {
                     $this->records = array(
                         'ip' => $counter_ip,
-                        'visit' => NOW(),
+                        'visit' => $now,
                     );
                     $this->results = $this->common_model->insertRecords($this->common_model->_counter_ips, $this->records);
                 }
             }
+            
+            //echo $ignore;
 
-            if ($ignore == false) {
+            if ($ignore == 0) {
                 if ($day_id == (date("z") - 1)) {
                     $yesterday_value = $day_value;
                 } else {
@@ -173,7 +191,7 @@ class Visitorcounter extends MX_Controller {
         }
     }
 
-    function bn2enNumber($number) {
+    /*function bn2enNumber($number) {
         $search_array = array("১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০");
         $replace_array = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
         $en_number = str_replace($replace_array, $search_array, $number);
@@ -205,6 +223,6 @@ class Visitorcounter extends MX_Controller {
                 » $all_value মোট   </p>";
         
         return bn2enNumber($data);
-    }
+    }*/
 
 }

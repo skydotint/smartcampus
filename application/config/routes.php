@@ -57,7 +57,9 @@ $route['logout'] = 'auth/logout';
 $route['dashboard'] = 'auth/dashboard';
 $route['addsysuser'] = 'auth/create_user';
 $route['users'] = 'auth/index';
-$route['profile'] = 'auth/profile';
+$route['viewprofile'] = 'profiles/index';
+$route['editprofile'] = 'profiles/editprofileform';
+$route['editprofileajax'] = 'profiles/editprofileajax';
 
 // About Idea Tweaker
 $route['aboutideatweaker'] = 'ideatweaker/index';
@@ -122,6 +124,12 @@ $route['deleteteacher/(:num)'] = 'teachers/deleteteacherajax';
 $route['editteacher/(:num)'] = 'teachers/editteacherform';
 $route['editteacherajax'] = 'teachers/editteacherajax';
 
+// Guardians
+$route['addnewguardian/(:num)'] = 'guardians/index';
+$route['addguardianajax'] = 'guardians/addguardianajax';
+$route['editguardian/(:num)'] = 'guardians/editguardianform';
+$route['editguardianajax'] = 'guardians/editguardianajax';
+
 // Applicantss
 $route['viewapplicants'] = 'applicants/index';
 $route['addnewapplicant'] = 'applicants/addapplicantform';
@@ -144,17 +152,21 @@ $route['editclassajax'] = 'classes/editclassajax';
 
 // Class Routine
 $route['viewroutine'] = 'classroutine/viewroutine';
+$route['viewclassroutine'] = 'classroutine/viewclassroutine';
 $route['addroutine'] = 'classroutine/addroutine';
 $route['routineajax'] = 'classroutine/routineajax';
 $route['getroutineajax'] = 'classroutine/getroutineajax';
 $route['deleteroutine/(:num)'] = 'classroutine/deleteroutine';
 $route['editroutine/(:num)'] = 'classroutine/editroutine';
 $route['editroutineajax'] = 'classroutine/editroutineajax';
+$route['classroutines'] = 'classroutine/classroutines';
 
 // Attendance
 $route['attendance'] = 'attendance/attendance';
 $route['attendanceajax'] = 'attendance/attendanceajax';
 $route['sendnotification'] = 'attendance/sendnotification';
+$route['viewabsence'] = 'attendance/viewabsence';
+$route['viewabsenceajax'] = 'attendance/viewabsenceajax';
 
 // Class Results 
 $route['generateresults'] = 'results/generateresults';

@@ -56,6 +56,7 @@ class Subjects_model extends Common_model {
                     $data.="<tr>
                             <td>" . $rows->dayname . "</td>
                             <td>" . $rows->periodname . "</td>
+                            <td>" . $rows->classtime . "</td>
                             <td>" . $rows->sectionname . "</td>
                             <td>" . $rows->studygroupsname . "</td>
                             <td>" . $rows->subjectname . "</td> 
@@ -74,11 +75,52 @@ class Subjects_model extends Common_model {
                     <tr>
                         <th>Day</th>
                         <th>Period</th>
+                        <th>Class Time</th>
                         <th>Section</th>
                         <th>Group</th>
                         <th>Subject</th>
                         <th>Teachers</th>
                         <th>Action</th>
+                    </tr>";
+            $dataend = "</tbody></table>";
+            $datafinal = $datastart . $data . $dataend;
+            return $datafinal;
+        } else
+            return false;
+    }
+	
+	public function viewRoutine($table, $join, $where, $option) {
+        if (!empty($where))
+            $sql = $this->db->get_where($table, $where);
+        else
+            $sql = $this->db->get($table);
+        if ($sql->num_rows() > 0) {
+            if ($option == "all") {
+                foreach ($sql->result() as $rows) {
+                    //$data[] = $rows;
+                    $data.="<tr>
+                            <td>" . $rows->dayname . "</td>
+                            <td>" . $rows->periodname . "</td>
+                            <td>" . $rows->classtime . "</td>
+                            <td>" . $rows->sectionname . "</td>
+                            <td>" . $rows->studygroupsname . "</td>
+                            <td>" . $rows->subjectname . "</td> 
+                            <td>" . $rows->firstname . " " . $rows->middlename . " " . $rows->lastname . "</td>
+                            </tr>";
+                }
+            } else {
+                $data = $sql->row_array();
+            }
+            $datastart = "<table class='table table-striped table-bordered dataTable'>
+                <tbody>
+                    <tr>
+                        <th>Day</th>
+                        <th>Period</th>
+                        <th>Class Time</th>
+                        <th>Section</th>
+                        <th>Group</th>
+                        <th>Subject</th>
+                        <th>Teachers</th>
                     </tr>";
             $dataend = "</tbody></table>";
             $datafinal = $datastart . $data . $dataend;

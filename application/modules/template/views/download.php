@@ -19,13 +19,13 @@
 						<?php }else{} ?>
 					<?php }else{ ?>
 					<h1 class="blue">ডাউনলোড কর্নার </h1>
-						<table class="table table-striped table-bordered dataTable">
+						<table class="table table-striped table-bordered dataTable download">
 							<tbody>
 								<tr>
 									<th>#</th>
-									<th>Title</th>
-									<th>Description</th>
-									<th>Download</th>
+									<th>শিরোনাম</th>
+									<th>বর্ণনা</th>
+									<th>ডাউনলোড</th>
 								</tr>
 								<?php $sl=1; foreach ($downloads as $download) { ?>
 									<tr>
@@ -45,9 +45,12 @@
 										
 										</td>
 										<td>
-										<?php $note=$download['attachment']; if($note){ ?>
-										<a href="<?php echo base_url(); ?>uploads/downloads/<?php echo $download['attachment']; ?>" target="_blank">Download</a>
-										<?php }else{echo "N/A";} ?>
+										<?php
+											$note=$download['attachment'];
+											if($note) {
+												echo fileIcon($note);
+											}
+										?>
 										</td>
 									</tr>
 								<?php } ?>

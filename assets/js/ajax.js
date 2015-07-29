@@ -2588,3 +2588,119 @@ function deletewebpage(id) {
         });
         return false;
     });
+	
+		/**
+     * New Guardian Adder
+     */
+    $('#addguardianbtn').click(function (e) {
+        e.preventDefault();
+        var form = $('#addguardianForm');
+        var formData = new FormData($(form)[0]);
+        var url = baseurl + 'addguardianajax';
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: url,
+            data: formData,
+            async: false,
+            success: function (data) {
+                $("#successmsg").html(data.msg + " Successfully Added").show().delay(3000).fadeOut();
+				$("#deptreload").load(window.location + " #deptreload");
+            },
+            error: function (data) {
+                $("#errormsg").html(data.msg + " failed to add").show().delay(3000).fadeOut();
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+        return false;
+    });
+	
+	function deleteguardian(id) {
+    bootbox.confirm("Are you sure?", function (result) {
+        if (result == true) {
+            //alert(id);
+
+            var url = baseurl + 'deleteguardian/' + id;
+            $.ajax({
+                type: 'GET',
+                dataType: 'JSON',
+                url: url,
+                data: id,
+                success: function (data) {
+                    //console.log(data.status);
+                    $("#successmsg").html(data.msg).show().delay(3000).fadeOut();
+                    $("#viewguardians").load(window.location + " #viewguardians");
+                },
+                error: function (data) {
+                    $("#errormsg").html(data.msg + " Failed to Delete").show().delay(3000).fadeOut();
+                }
+            });
+        } else {
+            return false;
+        }
+    });
+}
+
+/**
+     * Edit Guardian
+     */
+    $('#editguardianbtn').click(function (e) {
+        e.preventDefault();
+        var form = $('#editguardianForm');
+        var formData = new FormData($(form)[0]);
+        var url = baseurl + 'editguardianajax';
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: url,
+            data: formData,
+            success: function (data) {
+                $("#successmsg").html(data.msg + " Successfully Updated").show().delay(3000).fadeOut();
+				$("#deptreload").load(window.location + " #deptreload");
+            },
+            error: function (data) {
+                $("#errormsg").html(data.msg + " Failed To Update").show().delay(3000).fadeOut();
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+        return false;
+    });
+	
+	$('.viewabsence').submit(function (e) {
+        e.preventDefault();
+        
+        //var absencedate = ('[name=absencedate]').val();
+        var formId = $(this).closest("form").attr('id');
+        var formData = new FormData($('#' + formId)[0]);
+        var url = baseurl + 'viewabsenceajax';
+        var activeClass = $('ul.classSideMenu li.active a').attr('href');
+        var activeHrefsep = activeClass.split('#');
+        activeId = activeHrefsep[1];
+        $('.dynamicvroutine').remove();
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: url,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (html) {
+                var res = html.status;
+                var res = html.success;
+                if (res) {
+                    res = res;
+                } else {
+                    res = "<p style='font-weight:bold; color:#ff0000;'>There is student right now</p>";
+                }
+                $('.showRoutineClass').html("<div class='dynamicvroutine'>" + res + "</div>");
+            },
+            error: function (html) {
+
+            },
+        });
+    });

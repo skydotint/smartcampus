@@ -9,9 +9,9 @@
 						<div id="errormsg" class="alert alert alert-error" style="display: none;"></div>
 					</div>
 						<div class="singlePageContent">
-						   <h1 class="blue">পুরাতন ছাত্র ছাত্রীদের তথ্য </h1>
+						   <h1 class="blue">প্রাক্তন ছাত্র ছাত্রীদের তথ্য</h1>
 							<div class="col-lg-4">
-								<b>Class</b> &nbsp;<br>
+								<b>শ্রেণী</b> &nbsp;<br>
 								<select id="class" name="class" class="form-control">
 									<option value="">Select</option>
 									<option value="">HSC</option>
@@ -20,7 +20,7 @@
 								</select>
 							</div>
 							<div class="col-lg-4">
-								<b>Department </b><br>
+								<b>বিভাগ</b><br>
 								<select class="form-control" name="department" id="department">
 									<option value="">Select</option>
 									<option value="">Science</option>
@@ -42,8 +42,8 @@
 										</div>
 										<div class="stdnInfoRight">
 											<p class="name"><?php echo $sinstudent->firstname; ?></p>
-											<p class="roll">Roll: <?php echo $sinstudent->classroll; ?></p>
-											<p class="roll">Gender: <?php echo $sinstudent->gender; ?></p>
+											<p class="roll">রোলঃ <?php echo $sinstudent->classroll; ?></p>
+											<p class="roll">লিঙ্গঃ <?php echo bn2enSomeCommonString($sinstudent->gender); ?></p>
 										</div>
 										<div class="viewDetails">
 											<a href="<?php echo base_url(); ?>studentinfo/<?php echo $sinstudent->studentid; ?>">বিস্তারিত</a>

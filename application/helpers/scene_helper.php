@@ -889,13 +889,26 @@ function wordLimit($limit, $string) {
     }
     return $string;
 }
-
+function readMore($string, $limit, $url, $text) {
+    if (strlen($string) > $limit) {
+        $trimstring = substr($string, 0, $limit) . ' <a href="'.$url.'">'.$text.'</a>';
+    } else {
+        $trimstring = $string;
+    }
+    return $trimstring;
+}
+function bn2enSomeCommonString($string) {
+	$search_array = array("Female", "Male");
+        $replace_array = array("মহিলা", "পুরুষ");
+        $en_number = str_replace($search_array, $replace_array, $string);
+        return $en_number;
+}
 function bn2enNumber($number) {
-        $search_array = array("১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০");
-        $replace_array = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
+        $search_array = array("১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০", "-");
+        $replace_array = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-");
         $en_number = str_replace($replace_array, $search_array, $number);
         return $en_number;
-    }
+}
 
 function sendSms($message, $receiver) {
     $smscontent = urlencode($message);
@@ -909,6 +922,46 @@ function sendSms($message, $receiver) {
     $data = curl_exec($ch);
     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
+}
+
+
+/**
+** Attachment Icon
+**/
+
+function fileIcon($filename) {
+	if ($filename) {
+		$ext = pathinfo($filename, PATHINFO_EXTENSION);
+		//$ext;
+		if ($ext == "pdf") {
+	            $html ='<a href="' . base_url() . 'uploads/notice/' . $filename. '" target="_blank">
+		                <img src="' . base_url() . 'feassets/images/pdf.png">
+		            </a>';
+	        } elseif ($ext == "xls") {
+	            $html ='<a href="' . base_url() . 'uploads/notice/' . $filename. '" target="_blank">
+		                <img src="' . base_url() . 'feassets/images/xls.png">
+		            </a>';
+	        } elseif ($ext == "xlsx") {
+	            $html ='<a href="' . base_url() . 'uploads/notice/' . $filename. '" target="_blank">
+		                <img src="' . base_url() . 'feassets/images/xls.png">
+		            </a>';
+	        } elseif ($ext == "doc") {
+	            $html ='<a href="' . base_url() . 'uploads/notice/' . $filename. '" target="_blank">
+		                <img src="' . base_url() . 'feassets/images/docx.png">
+		            </a>';
+	        } elseif ($ext == "docx") {
+	            $html ='<a href="' . base_url() . 'uploads/notice/' . $filename. '" target="_blank">
+		                <img src="' . base_url() . 'feassets/images/docx.png">
+		            </a>';
+	        } else {
+	            $html ='<a href="' . base_url() . 'uploads/notice/' . $filename. '" target="_blank">
+		                <img src="' . base_url() . 'feassets/images/download.png">
+		            </a>';
+	        }
+	} else {
+		$html ="N/A";
+	}
+        return $html;
 }
 
 /* End of file helper.php */

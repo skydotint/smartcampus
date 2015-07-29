@@ -30,45 +30,25 @@
 								</tr>
 								<?php $sl=1; foreach ($notices as $notice) { ?>
 									<tr>
-										<td><?php echo $sl++; ?></td>
+										<td><?php echo bn2enNumber($sl++); ?></td>
 										<td><?php echo $notice['noticetitle']; ?></td>
 										<td>
 										<?php 
-										$noticeid=$notice['noticeid'];
-										$string = $notice['noticedescription'];
-											if (strlen($string) > 200) {
-											$trimstring = substr($string, 0, 200). ' <a href="notice/'.$noticeid.'" >বিস্তারিত ...</a>';
-											} else {
-											$trimstring = $string;
-											}
-											echo $trimstring;
-
+											$description = $notice['noticedescription'];
+											$newsid = $notice['noticeid'];
+											echo readMore($description, 200, "notice/".$newsid, "বিস্তারিত")
 										?>
 										
 										</td>
-										<td><?php echo $notice['publishdate']; ?></td>
+										<td><?php echo bn2enNumber($notice['publishdate']); ?></td>
 										<td class="thDownload">
-										<?php  
-										
-										$note=$notice['attachment']; if($note){
-											$ext = pathinfo($note, PATHINFO_EXTENSION);
-											//echo $ext;
-											if($ext=="pdf"){
+										<?php
+											$note = $notice['attachment'];
+											if($note) {
+												echo fileIcon($note);
+											}
 										?>
-										<a href="<?php echo base_url(); ?>uploads/notice/<?php echo $notice['attachment']; ?>" target="_blank"><img src="<?php echo base_url(); ?>feassets/images/pdf.png"></a>
-											<?php }elseif($ext=="xls"){ ?>
-											<a href="<?php echo base_url(); ?>uploads/notice/<?php echo $notice['attachment']; ?>" target="_blank"><img src="<?php echo base_url(); ?>feassets/images/xls.png"></a>
-											<?php }elseif($ext=="xlsx"){ ?>
-											<a href="<?php echo base_url(); ?>uploads/notice/<?php echo $notice['attachment']; ?>" target="_blank"><img src="<?php echo base_url(); ?>feassets/images/xls.png"></a>
-											<?php }elseif($ext=="doc"){ ?>
-											<a href="<?php echo base_url(); ?>uploads/notice/<?php echo $notice['attachment']; ?>" target="_blank"><img src="<?php echo base_url(); ?>feassets/images/docx.png"></a>
-											<?php }elseif($ext=="docx"){ ?>
-											<a href="<?php echo base_url(); ?>uploads/notice/<?php echo $notice['attachment']; ?>" target="_blank"><img src="<?php echo base_url(); ?>feassets/images/docx.png"></a>
-											<?php }else{ ?>
-											<a href="<?php echo base_url(); ?>uploads/notice/<?php echo $notice['attachment']; ?>" target="_blank"><img src="<?php echo base_url(); ?>feassets/images/download.png"></a>
-											<?php } ?>
-
-											<?php }else{echo "N/A";} ?>
+										
 										</td>
 									</tr>
 								<?php } ?>

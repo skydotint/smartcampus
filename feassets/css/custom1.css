@@ -10,8 +10,9 @@
 }
 body {
     color: #727272;
-    font-family: "kalpurushregular",sans-serif;
-    font-size: 18px;
+    //font-family: "kalpurushregular",sans-serif;
+font-family: "kalpurush",sans-serif;
+    font-size:17px;
     line-height: 1.5em;
 }
 .header {
@@ -108,7 +109,6 @@ h2.marginTop0 {
     margin-top: 28px;
 }
 .columnOne, .columnTwo, .columnThree {
-    background: rgba(0, 0, 0, 0) url("../images/placeholder.jpg") no-repeat scroll 0 0 / cover ;
     float: left;
     height: auto;
     line-height: 150px;
@@ -130,7 +130,7 @@ h2.marginTop0 {
 }
 .map iframe {
     border: 1px solid #ddd !important;
-    border-radius: 4px;
+    border-radius: 4px 4px 0 0;
     width: 100%;
 }
 @media only screen and (min-width: 992px) {
@@ -151,10 +151,11 @@ h2.marginTop0 {
 }
 .schoolName {
     float: left;
-    margin-left: 20px;
-    text-align: left;
-    width: 60%;
+    margin-left: 0px;
+    text-align: center;
+    width: 100%;
 }
+.schoolnamesize { font-size: 22px; }
 .schoolName h2 {
     font-size: 30px;
     margin-left: 15px;
@@ -174,9 +175,13 @@ h2.marginTop0 {
 }
 .schoolInfo {
     padding-bottom: 20px;
+    
+    text-align: justify;
+    
 }
 .schoolInfo p {
     color: #727272;
+    padding-right: 15px;
     margin-left: 15px;
 }
 .schoolInfo ul {
@@ -243,14 +248,14 @@ h2.marginTop0 {
 }
 .impLinksWrap h4 {
     color: #fff;
-    font-size: 18px;
+    font-size:17px;
     font-weight: normal;
     margin-top: 0;
     padding: 10px 15px;
 }
 .impLinksWrap ul li a {
     color: #727272 !important;
-    font-size: 18px;
+    font-size:17px;
     padding-left: 10px;
 }
 .glyphicon {
@@ -262,7 +267,7 @@ button.admission {
     border-radius: 5px;
     color: red;
     font-size: 25px;
-    margin: 19px 0 5px;
+    margin: 0px 0 5px;
     padding: 18px 0;
     text-align: left;
     text-indent: 125px;
@@ -365,7 +370,7 @@ ul.nav-tabs li {
 }
 .tab-content a {
     color: #727272;
-    font-size: 18px;
+    font-size:17px;
 }
 div#Chart2 {
     background: #e0e0e0 none repeat scroll 0 0 !important;
@@ -407,12 +412,15 @@ div#Chart2 iframe {
 .copyright {
     background: #003a6a none repeat scroll 0 0;
     border-top: 2px solid #7ab700;
-    color: #337ab7;
+    color: #FFFFFF;
     display: table;
     height: 35px;
     line-height: 32px;
     text-align: center;
     width: 100%;
+}
+.copyright a {
+	color: #c4f95f;
 }
 .copyright a:hover {
     color: #fff;
@@ -487,7 +495,7 @@ button.admission {
 }
 .impLinksWrapinn h4 {
     color: #fff;
-    font-size: 18px;
+    font-size:17px;
     font-weight: normal;
     margin-top: 0;
     padding: 10px 15px;
@@ -507,7 +515,7 @@ button.admission {
 }
 .leftMenu h4 {
     color: #fff;
-    font-size: 18px;
+    font-size:17px;
     font-weight: normal;
     margin-top: 0;
     padding: 10px 15px;
@@ -917,3 +925,58 @@ table.download td img  {
 table.download .thNumber {width: 3%;}
 table.download .thTitle { width: 77%;}
 table.download .thDownload{width: 20%; text-align: center;}
+.vps p { margin-top:-6px;}
+label { font-weight: normal; }
+select, textarea, input[type="text"], input[type="file"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input { font-weight: normal; font-size:17px; }
+.fullimg{width:100%; height:auto;}
+
+/*.News Ticker..*/
+.ticker{
+	padding:5px 20px 5px 70px;
+	height:35px;
+	overflow:hidden;
+	background:#BC0203;
+	position:relative;
+        margin: 25px 0 -5px 0;
+
+ background: #e0e0e0;
+    border: 1px solid #c4c4c4;
+    margin: 15px 0 -10px;
+    height: 37px;
+}
+.ticker .caroufredsel_wrapper{width:100% !important}
+.ticker ul{
+	width:100%;
+	padding:0;
+	margin:0;
+	height:22px;
+	color:#fff;
+	
+}
+.ticker ul li{
+	font-size:17px;
+	float:left;
+	margin-right:10px !important;
+	height:22px;
+list-style:disc;
+margin-left:20px; padding-left:0px;
+color: #003a6a;
+}
+.ticker ul li a{ color: #003a6a;}
+.ticker ul li a:hover{ color: #000000;}
+.ticker > span{
+	position:absolute;
+	top:0;
+	left:0;
+	display:block;
+	padding:5px 6px;
+        height:35px;
+	color:#fff;
+	background:#000;
+	font-size:17px;
+}
+.fa { font-size: 13px!important; float: left; margin-top: 3px; }
+.leftMenu ul li { line-height:25px;}
+.impLinksWrap ul li { line-height:25px;}
+
+

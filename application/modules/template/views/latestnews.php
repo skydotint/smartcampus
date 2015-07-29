@@ -25,22 +25,17 @@
 								</tr>
 								<?php $sl=1; foreach ($allnews as $news) { ?>
 									<tr>
-										<td><?php echo $sl++; ?></td>
+										<td><?php echo bn2enNumber($sl++); ?></td>
 										<td><?php echo $news['newstitle']; ?></td>
 										<td>
 										<?php 
-										$newsid=$news['newsid'];
-										$string = $news['newsdescription'];
-											if (strlen($string) > 200) {
-											$trimstring = substr($string, 0, 200). ' <a href="latestnews/'.$newsid.'">More...</a>';
-											} else {
-											$trimstring = $string;
-											}
-											echo $trimstring;
+										$description = $news['newsdescription'];
+										$newsid = $news['newsid'];
+										echo readMore($description, 200, "notice/".$newsid, "বিস্তারিত")
 										?>
 										
 										</td>
-										<td><?php echo $news['publishdate']; ?></td>
+										<td><?php echo bn2enNumber($news['publishdate']); ?></td>
 									</tr>
 								<?php } ?>
 

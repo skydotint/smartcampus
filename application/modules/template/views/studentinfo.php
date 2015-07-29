@@ -18,7 +18,7 @@
 											<span class="stdnSingleSpanRight"><?php echo $singlestudent['firstname']; ?> <?php echo $singlestudent['middlename']; ?> <?php echo $singlestudent['lastname']; ?></span>
 										</li>
 										<li><span class="stdnSingleSpanLeft">লিঙ্গ</span>
-											<span class="stdnSingleSpanRight"><?php echo $singlestudent['gender']; ?></span>
+											<span class="stdnSingleSpanRight"><?php echo bn2enSomeCommonString($singlestudent['gender']); ?></span>
 										</li>
 										<li><span class="stdnSingleSpanLeft">বিভাগ</span>
 											<span class="stdnSingleSpanRight"><?php echo $singlestudent['stdgroup']; ?> </span>
@@ -27,7 +27,9 @@
 											<span class="stdnSingleSpanRight"><?php echo $singlestudent['classroll']; ?> </span>
 										</li>
 										<li><span class="stdnSingleSpanLeft">জন্ম তারিখ</span>
-											<span class="stdnSingleSpanRight"><?php echo $singlestudent['birthdate']; ?></span>
+											<span class="stdnSingleSpanRight">
+												<?php echo bn2enNumber($singlestudent['birthdate']); ?>
+											</span>
 										</li>
 										<li><span class="stdnSingleSpanLeft">স্থায়ী ঠিকানা</span>
 											<span class="stdnSingleSpanRight"><?php echo $singlestudent['mailingaddress']; ?></span>
