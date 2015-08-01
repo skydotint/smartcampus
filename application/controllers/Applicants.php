@@ -41,6 +41,8 @@ class Applicants extends CI_Controller {
 
     public function addapplicantform() {
         $this->data['user'] = $this->ion_auth->user()->row();
+		$this->data['classes'] = $this->classes_model->getClassess();
+        $this->data['sections'] = $this->sections_model->getSections();
         $this->load->view('admintheme/header', $this->data);
         $this->load->view('admintheme/sidebar');
         $this->load->view('applicants/addapplicantform');
@@ -48,7 +50,7 @@ class Applicants extends CI_Controller {
     }
 
     public function addapplicantajax() {
-        $config['upload_path'] = "uploads/";
+        $config['upload_path'] = "uploads/onlineapplicants/";
         $config['allowed_types'] = "gif|jpg|jpeg|png";
         $config['max_size'] = "5000";
         $config['max_width'] = "1907";
@@ -60,22 +62,31 @@ class Applicants extends CI_Controller {
         } else {
             $data = $this->upload->data();
             
-            $this->records = array(
-                'applicantid' => $this->input->post('applicantid', true),
-                'applicantuserid' => rand(1, 3500000),
-                'firstname' => $this->input->post('firstname', true),
-                'middlename' => $this->input->post('middlename', true),
-                'lastname' => $this->input->post('lastname', true),
-                'tphone' => $this->input->post('tphone', true),
-                'mailingaddress' => $this->input->post('mailingaddress', true),
-                'birthdate' => $this->input->post('birthdate', true),
-                'email' => $this->input->post('email', true),
-                'joindate' => NOW(),
-                'photo' => $data['file_name'],
-                'birthdate' => $this->input->post('birthdate', true),
-                'enrollmentstatus' => $this->input->post('enrollmentstatus', true),
-                'isActive' => 1
-            );
+			 $this->records = array(
+			'namebangla' => $this->input->post('namebangla', true),
+			'nameenglish' => $this->input->post('nameenglish', true),
+			'fathernamebangla' => $this->input->post('fathernamebangla', true),
+			'fathernameenglish' => $this->input->post('fathernameenglish', true),
+			'mothernamebangla' => $this->input->post('mothernamebangla', true),
+			'mothernameenglish' => $this->input->post('mothernameenglish', true),
+			'birthdate' => $this->input->post('birthdate', true),
+			'mobileno' => $this->input->post('mobileno', true),
+			'permanentaddress' => $this->input->post('permanentaddress', true),
+			'presentaddress' => $this->input->post('presentaddress', true),
+			'othersgurdian' => $this->input->post('othersgurdian', true),
+			'relation' => $this->input->post('relation', true),
+			'othersgurdianpermanentaddress' => $this->input->post('othersgurdianpermanentaddress', true),
+			'othersgurdianpresentaddress' => $this->input->post('othersgurdianpresentaddress', true),
+			'gurdianmobileno' => $this->input->post('gurdianmobileno', true),
+			'nationality' => $this->input->post('nationality', true),
+			'gender' => $this->input->post('gender', true),
+			'religion' => $this->input->post('religion', true),
+			'stdgroup' => $this->input->post('stdgroup', true),
+			'class' => $this->input->post('class', true),
+			'section' => $this->input->post('section', true),
+			'photo' => $data['file_name'],
+			'isActive' => 1
+			);
 
             $this->results = $this->common_model->insertRecords($this->common_model->_applicants, $this->records);
 
@@ -92,6 +103,8 @@ class Applicants extends CI_Controller {
 	
 	public function editapplicantform() {
         $this->data['user'] = $this->ion_auth->user()->row();
+		$this->data['classes'] = $this->classes_model->getClassess();
+        $this->data['sections'] = $this->sections_model->getSections();
 		$this->id = $this->uri->segment(2);
         $this->where = array('applicantid' => $this->id);
         //var_dump($this->where);
@@ -104,7 +117,9 @@ class Applicants extends CI_Controller {
     }
 	
 	public function editapplicantajax() {
-		$config['upload_path'] = "uploads/";
+		$this->id = $this->input->post('applicantid', true);
+		$this->where = array('applicantid' => $this->id);
+		$config['upload_path'] = "uploads/onlineapplicants/";
 		$config['allowed_types'] = "gif|jpg|jpeg|png";
 		$config['max_size'] = "5000";
 		$config['max_width'] = "1907";
@@ -112,27 +127,60 @@ class Applicants extends CI_Controller {
 		//$this->load->library('upload', $config);
 		$this->upload->initialize($config);
 		if (!$this->upload->do_upload('photo')) {
-			echo $this->upload->display_errors();
+			//echo $this->upload->display_errors();
+			$this->records = array(
+			'namebangla' => $this->input->post('namebangla', true),
+			'nameenglish' => $this->input->post('nameenglish', true),
+			'fathernamebangla' => $this->input->post('fathernamebangla', true),
+			'fathernameenglish' => $this->input->post('fathernameenglish', true),
+			'mothernamebangla' => $this->input->post('mothernamebangla', true),
+			'mothernameenglish' => $this->input->post('mothernameenglish', true),
+			'birthdate' => $this->input->post('birthdate', true),
+			'mobileno' => $this->input->post('mobileno', true),
+			'permanentaddress' => $this->input->post('permanentaddress', true),
+			'presentaddress' => $this->input->post('presentaddress', true),
+			'othersgurdian' => $this->input->post('othersgurdian', true),
+			'relation' => $this->input->post('relation', true),
+			'othersgurdianpermanentaddress' => $this->input->post('othersgurdianpermanentaddress', true),
+			'othersgurdianpresentaddress' => $this->input->post('othersgurdianpresentaddress', true),
+			'gurdianmobileno' => $this->input->post('gurdianmobileno', true),
+			'nationality' => $this->input->post('nationality', true),
+			'gender' => $this->input->post('gender', true),
+			'religion' => $this->input->post('religion', true),
+			'stdgroup' => $this->input->post('stdgroup', true),
+			'class' => $this->input->post('class', true),
+			'section' => $this->input->post('section', true),
+			'isActive' => 1
+			);
 		} else {
 		$data = $this->upload->data();
-		
-		$this->id = $this->input->post('applicantid', true);
-		$this->where = array('applicantid' => $this->id);
 		//var_dump($this->where);
 		//exit;
-		$this->records = array(
-			'firstname' => $this->input->post('firstname', true),
-			'middlename' => $this->input->post('middlename', true),
-			'lastname' => $this->input->post('lastname', true),
-			'mailingaddress' => $this->input->post('mailingaddress', true),
-			'gender' => $this->input->post('gender', true),
+		 $this->records = array(
+			'namebangla' => $this->input->post('namebangla', true),
+			'nameenglish' => $this->input->post('nameenglish', true),
+			'fathernamebangla' => $this->input->post('fathernamebangla', true),
+			'fathernameenglish' => $this->input->post('fathernameenglish', true),
+			'mothernamebangla' => $this->input->post('mothernamebangla', true),
+			'mothernameenglish' => $this->input->post('mothernameenglish', true),
 			'birthdate' => $this->input->post('birthdate', true),
-			'email' => $this->input->post('email', true),
-			'joindate' => $this->input->post('joindate', true),
-			'enrollmentstatus' => $this->input->post('gender', true),
+			'mobileno' => $this->input->post('mobileno', true),
+			'permanentaddress' => $this->input->post('permanentaddress', true),
+			'presentaddress' => $this->input->post('presentaddress', true),
+			'othersgurdian' => $this->input->post('othersgurdian', true),
+			'relation' => $this->input->post('relation', true),
+			'othersgurdianpermanentaddress' => $this->input->post('othersgurdianpermanentaddress', true),
+			'othersgurdianpresentaddress' => $this->input->post('othersgurdianpresentaddress', true),
+			'gurdianmobileno' => $this->input->post('gurdianmobileno', true),
+			'nationality' => $this->input->post('nationality', true),
+			'gender' => $this->input->post('gender', true),
+			'religion' => $this->input->post('religion', true),
+			'stdgroup' => $this->input->post('stdgroup', true),
+			'class' => $this->input->post('class', true),
+			'section' => $this->input->post('section', true),
 			'photo' => $data['file_name'],
 			'isActive' => 1
-		);
+			);
 
 		$this->results = $this->common_model->updateRecords($this->common_model->_applicants, $this->records, $this->where);
 		if ($this->results == 1) {

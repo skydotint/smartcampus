@@ -20,6 +20,7 @@ class Staffs extends CI_Controller {
         parent::__construct();
         $this->load->model("common_model");
         $this->load->model("staffs_model");
+        $this->load->model("users_model");
         $this->load->library(array('ion_auth', 'form_validation', 'upload'));
 
         if (!$this->ion_auth->logged_in()) {
@@ -40,6 +41,7 @@ class Staffs extends CI_Controller {
 
     public function addstaffform() {
         $this->data['user'] = $this->ion_auth->user()->row();
+		$this->data['users'] = $this->users_model->getLastuserid();
         $this->load->view('admintheme/header', $this->data);
         $this->load->view('admintheme/sidebar');
         $this->load->view('staffs/addstaffform');
@@ -61,7 +63,7 @@ class Staffs extends CI_Controller {
             
             $this->records = array(
                 'staffid' => $this->input->post('staffid', true),
-                'staffuserid' => rand(1, 3500000),
+                'staffuserid' => $this->input->post('staffuserid', true),
                 'firstname' => $this->input->post('firstname', true),
                 'middlename' => $this->input->post('middlename', true),
                 'lastname' => $this->input->post('lastname', true),
@@ -75,8 +77,21 @@ class Staffs extends CI_Controller {
                 'enrollmentstatus' => $this->input->post('enrollmentstatus', true),
                 'isActive' => 1
             );
+			$this->urecords = array(
+                'username' => $this->input->post('staffuserid', true),
+                'created_on' => NOW(),
+                'first_name' => $this->input->post('firstname', true),
+				'phone' => $this->input->post('sphone', true),
+				'last_name' => $this->input->post('lastname', true)
+            ); 
+			$this->ugrpuprecords = array(
+                'user_id' => $this->input->post('id', true),
+                'group_id' => 5
+            ); 
 
             $this->results = $this->common_model->insertRecords($this->common_model->_staffs, $this->records);
+			$this->results = $this->common_model->insertRecords($this->common_model->_usersTable, $this->urecords);
+            $this->results = $this->common_model->insertRecords($this->common_model->_users_groups, $this->ugrpuprecords);
 
             if ($this->results) {
                 $this->status['status'] = 1;

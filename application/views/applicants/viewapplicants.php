@@ -11,27 +11,19 @@
                         <th>Applicant Name</th>
                         <th>Applicant Phone</th>
                         <th>Gender</th>
-                        <th>Email</th>
-                        <th>Joining Date</th>
+                        <th>Class</th>
+                        <th>Group</th>
                         <th>Action</th>
                     </tr>
-                    <?php foreach($applicants as $applicant) { ?>
+                    <?php $sl=1; foreach($applicants as $applicant) { ?>
                     <tr>
-                        <td><?php echo $applicant['applicantid']; ?></td>
-                        <td>
-                            <?php echo $applicant['firstname'] . " " ; ?>
-                            <?php if($applicant['middlename']) { ?>
-                                <?php echo " " . $applicant['middlename']; ?>
-                            <?php } ?>
-                            <?php echo $applicant['lastname']; ?>
-                        </td>
-                        <td><?php echo $applicant['tphone']; ?></td>
+                        <td><?php echo $sl++; ?></td>
+                        <td><?php echo $applicant['namebangla']; ?></td>
+                        <td><?php echo $applicant['mobileno']; ?></td>
                         <td><?php echo $applicant['gender']; ?></td>
-                        <td><?php echo $applicant['email']; ?></td>
-                        <td><?php echo $applicant['joindate']; ?></td>
+                        <td><?php echo $applicant['class']; ?></td>
+                        <td><?php echo $applicant['stdgroup']; ?></td>
                         <td>
-                            <a class="btn btn-success btn-mini" href="viewprofile/<?php echo $applicant['applicantid']; ?>">View Profile</i></a>
-                            <a class="btn btn-success btn-mini" href="printapplicantprofile/<?php echo $applicant['applicantid']; ?>"><i class="icon icon-print"></i></a>
                             <a class="btn btn-success btn-mini" href="editapplicant/<?php echo $applicant['applicantid']; ?>"><i class="icon icon-edit"></i></a>
 							<a onclick="deleteapplicant(<?php echo $applicant['applicantid']; ?>)" class="btn btn-danger btn-mini" href="javascript:void(0)"><i class="icon icon-remove"></i></a>
                         </td>

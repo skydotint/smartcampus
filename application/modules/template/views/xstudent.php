@@ -31,24 +31,21 @@
 							<div class="col-lg-4">
 								<button  type="submit" class="btn btn-primary filterSubmit">প্রেরণ করুন</button>
 							</div><br><br>
-							<ul>
+							<ul class="allstdRes  allstdResChange">
 							<?php foreach ($students as $sinstudent) { ?>
 								<li>
-									<div class="stdnInfo">
-										<div class="stdnInfoLeft">
-											<span class="imageWrap">
-												<img src="<?php echo base_url(); ?>uploads/students/<?php echo $sinstudent->photo; ?>">
-											</span>
-										</div>
-										<div class="stdnInfoRight">
-											<p class="name"><?php echo $sinstudent->firstname; ?></p>
-											<p class="roll">রোলঃ <?php echo $sinstudent->classroll; ?></p>
-											<p class="roll">লিঙ্গঃ <?php echo bn2enSomeCommonString($sinstudent->gender); ?></p>
-										</div>
-										<div class="viewDetails">
-											<a href="<?php echo base_url(); ?>studentinfo/<?php echo $sinstudent->studentid; ?>">বিস্তারিত</a>
-										</div>
-									</div>
+								
+								<div class="studentChange">
+                                        <a href="<?php echo base_url(); ?>studentinfo/<?php echo $sinstudent->studentid; ?>">
+                                            <img src="<?php echo base_url(); ?>uploads/students/<?php echo $sinstudent->photo; ?>">
+                                            <span>
+												নাম : <?php echo $sinstudent->firstname; ?><br />
+												পাশের সন : <?php echo $sinstudent->year; ?><br />
+												মোবাইল : <?php echo $sinstudent->sphone; ?>
+                                            </span>
+                                            
+                                            </a>
+                                    </div>
 								</li>
 								<?php } ?>
 							</ul>

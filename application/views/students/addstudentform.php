@@ -2,6 +2,7 @@
     <div class="navbar navbar-inner block-header">
         <div class="muted pull-left">Add New Student</div>
     </div>
+	<?php //var_dump($departments); ?>
     <div class="block-content collapse in">
         <div class="span12">
             <form class="form-horizontal form-groups-bordered validate" id="addstudentForm" action="javascript:void(0);" enctype="multipart/form-data">
@@ -12,7 +13,8 @@
                             <input class="input-xlarge focused" name="firstname" type="text">
                             <input class="input-xlarge focused" name="userid" type="hidden" value="<?php echo $this->ion_auth->logged_in(); ?>">
 							<?php foreach ($users as $user) { ?>
-						   <input class="input-xlarge focused" name="studentuserid" type="hidden" value="<?php echo $user['id'] + 1; ?>">
+						   <input class="input-xlarge focused" name="studentuserid" type="hidden" value="<?php echo $user['username'] + 1; ?>">
+						   <input class="input-xlarge focused" name="id" type="hidden" value="<?php $id=$user['id'] + 1; echo $id; ?>">
 							<?php } ?>
 						</div>
                     </div>
@@ -85,10 +87,18 @@
                             <input class="input-xlarge focused" name="shift" type="text">
                         </div>
                     </div>
+				
 					<div class="control-group">
                         <label class="control-label" for="focusedInput">Department</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="department" type="text">
+                            <select name="department">
+                                <?php foreach($departments as $department) {
+                                    echo '<option value="'.$department['departmentname'].'">';
+                                        echo $department['departmentname'];
+                                    echo '</option>';
+                                }
+                                ?>
+                            </select>
                         </div>
                     </div>
 					<div class="control-group">
@@ -159,7 +169,7 @@
                     <div class="control-group">
                         <label class="control-label" for="focusedInput">Join Date</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="joindate" type="text">
+                            <input class="input-xlarge focused datepicker" name="joindate" type="text">
                         </div>
                     </div>
                     <div class="control-group">

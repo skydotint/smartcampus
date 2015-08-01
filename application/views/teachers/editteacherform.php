@@ -107,7 +107,7 @@
                     <div class="control-group">
                         <label class="control-label" for="focusedInput">Date of Birth</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="birthdate"  value="<?php echo $teachers['birthdate']; ?>" type="text">
+                            <input class="input-xlarge focused datepicker" name="birthdate"  value="<?php echo $teachers['birthdate']; ?>" type="text">
                         </div>
                     </div>
                     <div class="control-group">
@@ -119,7 +119,7 @@
                     <div class="control-group">
                         <label class="control-label" for="focusedInput">Join Date</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="joindate"  value="<?php echo $teachers['joindate']; ?>" type="text">
+                            <input class="input-xlarge focused datepicker" name="joindate"  value="<?php echo $teachers['joindate']; ?>" type="text">
                         </div>
                     </div>
 					

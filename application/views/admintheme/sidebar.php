@@ -111,6 +111,16 @@
 							<li class="divider"></li>
 						</ul>
                     </li>
+					<li class="panel">
+                        <a data-toggle="collapse" data-parent="#accordion1" href="#mediauploadLink"><i class="fa fa-user"></i> Media Upload</a>
+
+                        <ul id="mediauploadLink" class="nav nav-list collapse">
+                            <li class="divider"></li>
+							<li><a data-parent="#accordion1" href="<?php echo base_url(); ?>addnewmediaupload"><i class="fa fa-user"></i> Add New Media</a></li>
+                            <li><a data-parent="#accordion1" href="<?php echo base_url(); ?>viewmediauploads"><i class="fa fa-user"></i> All Medias</a></li>
+							<li class="divider"></li>
+						</ul>
+                    </li>
                     <li class="panel">
                         <a data-toggle="collapse" data-parent="#accordion1" href="#photogalleryLink"><i class="fa fa-user"></i> Photo Gallery</a>
 
@@ -267,7 +277,7 @@
                     </li>
 					<?php } ?>
 					<?php if ($this->ion_auth->in_group("Students")) { ?>
-					<li class="panel"><a href="#routineLink"><i class="fa fa-user"></i> Results</a></li>
+					<li class="panel"><a href="<?php echo base_url(); ?>singlestudentresult"><i class="fa fa-user"></i> Results</a></li>
 					<li class="panel"><a href="<?php echo base_url(); ?>viewabsence"><i class="fa fa-user"></i> View Absence</a></li>
 					<li class="panel"><a href="<?php echo base_url(); ?>viewclassroutine"><i class="fa fa-user"></i> Class Routine</a></li>
 					<li class="panel"><a href="#routineLink"><i class="fa fa-user"></i> Payment Status</a></li>

@@ -91,7 +91,15 @@
 					<div class="control-group">
                         <label class="control-label" for="focusedInput">Department</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="department" value="<?php echo $students['department']; ?>" type="text">
+                            <select name="department">
+							<option value="<?php echo $students['department']; ?>" selected><?php echo $students['department']; ?></option>
+                                <?php foreach($departments as $department) {
+                                    echo '<option value="'.$department['departmentname'].'">';
+                                        echo $department['departmentname'];
+                                    echo '</option>';
+                                }
+                                ?>
+                            </select>
                         </div>
                     </div>
 					<div class="control-group">
@@ -150,7 +158,7 @@
                     <div class="control-group">
                         <label class="control-label" for="focusedInput">Date of Birth</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="birthdate" value="<?php echo $students['birthdate']; ?>" type="text">
+                            <input class="input-xlarge focused datepicker" name="birthdate" value="<?php echo $students['birthdate']; ?>" type="text">
                         </div>
                     </div>
                     <div class="control-group">
@@ -162,7 +170,7 @@
                     <div class="control-group">
                         <label class="control-label" for="focusedInput">Join Date</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="joindate" value="<?php echo $students['joindate']; ?>" type="text">
+                            <input class="input-xlarge focused datepicker" name="joindate" value="<?php echo $students['joindate']; ?>" type="text">
                         </div>
                     </div>
                     <div class="control-group">

@@ -156,8 +156,22 @@ class Teachers extends CI_Controller {
                 'enrollmentstatus' => $this->input->post('enrollmentstatus', true),
                 'isActive' => 1
             );
+			
+			$this->urecords = array(
+                'username' => $this->input->post('teacheruserid', true),
+                'created_on' => NOW(),
+                'first_name' => $this->input->post('firstname', true),
+				'phone' => $this->input->post('tphone', true),
+				'last_name' => $this->input->post('lastname', true)
+            ); 
+			$this->ugrpuprecords = array(
+                'user_id' => $this->input->post('id', true),
+                'group_id' => 2
+            ); 
 
             $this->results = $this->common_model->insertRecords($this->common_model->_teachers, $this->records);
+			$this->results = $this->common_model->insertRecords($this->common_model->_usersTable, $this->urecords);
+            $this->results = $this->common_model->insertRecords($this->common_model->_users_groups, $this->ugrpuprecords);
 
             if ($this->results) {
                 $this->status['status'] = 1;

@@ -10,78 +10,191 @@
                 <fieldset>
 					
 					<div class="control-group">
-                        <label class="control-label" for="focusedInput">First Name</label>
+                        <label class="control-label" for="focusedInput">নাম (বাংলায়) </label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="firstname" value="<?php echo $applicants['firstname']; ?>" type="text">
+                            <input class="input-xlarge focused" name="namebangla" value="<?php echo $applicants['namebangla']; ?>" type="text">
                             <input name="applicantid" value="<?php echo $applicants['applicantid']; ?>" type="hidden">
-                            <input class="input-xlarge focused" name="userid" type="hidden" value="<?php echo $this->ion_auth->logged_in(); ?>">
+						</div>
+                    </div>
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">নাম (ইংরেজিতে বড় হাতের অক্ষরে) </label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" name="nameenglish" value="<?php echo $applicants['nameenglish']; ?>" type="text">
+						</div>
+                    </div>
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">পিতার নাম (বাংলায়) </label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" name="fathernamebangla" value="<?php echo $applicants['fathernamebangla']; ?>" type="text">
+						</div>
+                    </div>
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">পিতার নাম (ইংরেজিতে বড় হাতের অক্ষরে) </label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" name="fathernameenglish" value="<?php echo $applicants['fathernameenglish']; ?>" type="text">
+						</div>
+                    </div>
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">মাতার নাম (বাংলায়) </label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" name="mothernamebangla" value="<?php echo $applicants['mothernamebangla']; ?>" type="text">
+						</div>
+                    </div>
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">মাতার নাম (ইংরেজিতে বড় হাতের অক্ষরে) </label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" name="mothernameenglish" value="<?php echo $applicants['mothernameenglish']; ?>" type="text">
+						</div>
+                    </div>
+					
+					
+                    <div class="control-group">
+                        <label class="control-label" for="focusedInput">জন্ম তারিখ</label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" name="birthdate" value="<?php echo $applicants['birthdate']; ?>" type="text">
                         </div>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="focusedInput">Middle Name</label>
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">মোবাইল নম্বর</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="middlename" value="<?php echo $applicants['middlename']; ?>" type="text">
+                            <input class="input-xlarge focused" name="mobileno" value="<?php echo $applicants['mobileno']; ?>" type="text">
                         </div>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="focusedInput">Last Name</label>
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">স্থায়ী ঠিকানা </label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="lastname" value="<?php echo $applicants['lastname']; ?>" type="text">
+                           <textarea class="input-xlarge" name="permanentaddress" placeholdef="Enter address ..."><?php echo $applicants['permanentaddress']; ?></textarea>
                         </div>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="focusedInput">Phone</label>
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">বর্তমান ঠিকানা </label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="tphone" value="<?php echo $applicants['tphone']; ?>" type="text">
+                           <textarea class="input-xlarge" name="presentaddress" placeholdef="Enter address ..."><?php echo $applicants['presentaddress']; ?></textarea>
                         </div>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="focusedInput">Mailing Address</label>
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">পিতার অবর্তমানে অভিভাবকের নাম</label>
                         <div class="controls">
-                           <textarea name="mailingaddress" style=" width: 270px;"><?php echo $applicants['mailingaddress']; ?></textarea>
+                            <input class="input-xlarge focused" name="othersgurdian" value="<?php echo $applicants['othersgurdian']; ?>" type="text">
                         </div>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="focusedInput">Gender</label>
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">সম্পর্ক </label>
                         <div class="controls">
-                            <select name="gender">
+                            <input class="input-xlarge focused" name="relation" value="<?php echo $applicants['relation']; ?>" type="text">
+                        </div>
+                    </div>
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">পিতার অবর্তমানে অভিভাবকের স্থায়ী ঠিকানা </label>
+                        <div class="controls">
+                           <textarea class="input-xlarge" name="othersgurdianpermanentaddress" placeholdef="Enter address ..."><?php echo $applicants['othersgurdianpermanentaddress']; ?></textarea>
+                        </div>
+                    </div>
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">পিতার অবর্তমানে অভিভাবকের বর্তমান ঠিকানা </label>
+                        <div class="controls">
+                           <textarea class="input-xlarge" name="othersgurdianpresentaddress" placeholdef="Enter address ..."><?php echo $applicants['othersgurdianpresentaddress']; ?></textarea>
+                        </div>
+                    </div>
+					
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">অভিভাবকের মোবাইল নম্বর</label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" name="gurdianmobileno" value="<?php echo $applicants['gurdianmobileno']; ?>"  type="text">
+                        </div>
+                    </div>
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">জাতীয়তা</label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" name="nationality" value="<?php echo $applicants['nationality']; ?>" type="text">
+                        </div>
+                    </div>
+					
+					 <div class="control-group">
+                        <label class="control-label" for="focusedInput">লিঙ্গ</label>
+                        <div class="controls">
+                            <select class="input-xlarge" name="gender">
+								<option value="<?php echo $applicants['gender']; ?>" selected><?php echo $applicants['gender']; ?></option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
                         </div>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="focusedInput">Date of Birth</label>
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">ধর্ম</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="birthdate" value="<?php echo $applicants['birthdate']; ?>" type="text">
+							  <select class="input-xlarge" name="religion">
+							  <option value="<?php echo $applicants['religion']; ?>" selected><?php echo $applicants['religion']; ?></option>
+							  <option value="ইসলাম">ইসলাম</option>
+							  <option value="হিন্দু">হিন্দু</option>
+							  <option value="খ্রিস্ট">খ্রিস্ট</option>
+							  <option value="বৌদ্ধ">বৌদ্ধ</option>
+							  <option value="অন্যান্য">অন্যান্য</option>
+							  
+                            </select>
                         </div>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="focusedInput">Email</label>
+					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">বিভাগ</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="email" value="<?php echo $applicants['email']; ?>" type="text">
+							  <select class="input-xlarge" name="stdgroup">
+							  <option value="<?php echo $applicants['stdgroup']; ?>" selected><?php echo $applicants['stdgroup']; ?></option>
+							  <option value="Science">Science</option>
+							  <option value="Business Study">Business Study</option>
+							  <option value="Humanistic">Humanistic</option>
+                            </select>
                         </div>
                     </div>
+					        
                     <div class="control-group">
-                        <label class="control-label" for="focusedInput">Join Date</label>
+                        <label class="control-label" for="focusedInput">ক্লাস</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="joindate" value="<?php echo $applicants['joindate']; ?>" type="text">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="focusedInput">Enrollment Status</label>
-                        <div class="controls">
-                            <select name="enrollmentstatus">
-                               <option value="1">Current Applicant</option>
-                               <option value="2">X Applicant</option>
+                            <select class="input-xlarge" name="class">
+							 <option value="<?php echo $applicants['class']; ?>" selected><?php echo $applicants['class']; ?></option>
+                                <?php foreach($classes as $class) {
+                                    echo '<option value="'.$class['classname'].'">';
+                                        echo $class['classname'];
+                                    echo '</option>';
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="focusedInput" class="control-label">Applicant Photo</label>
+                        <label class="control-label" for="focusedInput">সেকশন</label>
+                        <div class="controls">
+                            <select class="input-xlarge" name="section">
+							 <option value="<?php echo $applicants['section']; ?>" selected><?php echo $applicants['section']; ?></option>
+                                <?php foreach($sections as $section) {
+                                    echo '<option value="'.$section['sectionname'].'">';
+                                        echo $section['sectionname'];
+                                    echo '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+					
+                   
+ 
+                    <div class="control-group">
+                        <label for="focusedInput" class="control-label">শিক্ষার্থীর ছবি</label>
 
                         <div class="controls">                            
-                            <input type="file" value="<?php echo $applicants['photo']; ?>" name="photo" id="photo" />
+                            <input class="input-xlarge" type="file" name="photo" id="photo" />
                         </div>
                     </div>
                     <hr/>

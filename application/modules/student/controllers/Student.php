@@ -23,18 +23,38 @@ class Student extends MX_Controller {
     }
 
     function index() {
+
         error_reporting(0);
+
+        $malewhere = array('gender' => 'Male');
+        $felalewhere = array('gender' => 'Female');
+        $data['total'] = bn2enNumber($this->common_model->getNumRows($this->common_model->_students, $where));
+        $data['male'] = bn2enNumber($this->common_model->getNumRows($this->common_model->_students, $malewhere));
+        $data['female'] = bn2enNumber($this->common_model->getNumRows($this->common_model->_students, $felalewhere));
+        $allStudents = $this->common_model->getAllRecordsWhere($this->common_model->_students, $where);
+        $malestudents = $this->common_model->getAllRecordsWhere($this->common_model->_students, $malewhere);
+
+
         $config = array();
         $config["base_url"] = base_url() . "student";
-        $config["total_rows"] = $this->students_model->getCount();
-        $config["per_page"] = 2;
+        // $config["total_rows"] = $this->students_model->getCount();
+        $config["total_rows"] = $this->common_model->getNumRows($this->common_model->_students, $malewhere);
+        $config["per_page"] = 5;
         $config["uri_segment"] = 2;
 
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
-        $data["students"] = $this->students_model->getStudentsWithPager($config["per_page"], $page);
+
+        //$where = array('class' => $class, 'section' => $section);
+
+
+
+        $data["students"] = $this->common_model->getAllRecordsWhereWithPager($this->common_model->_students, $config["per_page"], $page, $malewhere);
+
+
+        //$data["students"] = $this->students_model->getStudentsWithPager($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
-		$data['title'] = "ছাত্র ছাত্রীদের তালিকা";
+        $data['title'] = "ছাত্র ছাত্রীদের তালিকা";
 
         $this->data['classes'] = $this->classes_model->getClassess();
         $this->data['sections'] = $this->sections_model->getSections();
@@ -51,6 +71,8 @@ class Student extends MX_Controller {
         //$data['students'] = $this->students_model->getAllstudents();
         $data['vcount'] = $this->common_model->getRecords($this->common_model->_counter_values, $this->where, 's');
 
+
+
         $data['module'] = 'student';
         $data['view_settings'] = 'view_settings';
         $data['view_mainmenus'] = 'view_mainmenus';
@@ -61,7 +83,7 @@ class Student extends MX_Controller {
 
     function studentinfo() {
         $data['id'] = $this->uri->segment(2);
-		$data['title'] = "ছাত্র ছাত্রীদের তালিকা";
+        $data['title'] = "ছাত্র ছাত্রীদের তালিকা";
         $data['settings'] = $this->settings_model->getSettings();
         $data['photos'] = $this->photos_model->getPhotos();
         $data['webpages'] = $this->webpages_model->getParentpages();
@@ -76,7 +98,11 @@ class Student extends MX_Controller {
 
         $this->id = $this->uri->segment(2);
         $this->where = array('studentid' => $this->id);
+
         $data['singlestudent'] = $this->common_model->getRecords($this->common_model->_students, $this->where, 's');
+
+
+
 
         $data['module'] = 'student';
         $data['view_settings'] = 'view_settings';
@@ -93,15 +119,15 @@ class Student extends MX_Controller {
         $where = array('class' => $class, 'section' => $section);
         $malewhere = array('class' => $class, 'section' => $section, 'gender' => 'Male');
         $felalewhere = array('class' => $class, 'section' => $section, 'gender' => 'Female');
+        $total = bn2enNumber($this->common_model->getNumRows($this->common_model->_students, $where));
+        $male = bn2enNumber($this->common_model->getNumRows($this->common_model->_students, $malewhere));
+        $female = bn2enNumber($this->common_model->getNumRows($this->common_model->_students, $felalewhere));
         $allStudents = $this->common_model->getAllRecordsWhere($this->common_model->_students, $where);
         $malestudents = $this->common_model->getAllRecordsWhere($this->common_model->_students, $malewhere);
-        $total = $this->common_model->getNumRows($this->common_model->_students, $where);
-        $male = $this->common_model->getNumRows($this->common_model->_students, $malewhere);
-        $female = $this->common_model->getNumRows($this->common_model->_students, $felalewhere);
-        //print_r($data['malestudents']);
+
+        //print_r($malestudents);
         foreach ($malestudents as $malestudent) {
-            //echo $rows->middlename;
-            $singleData .= "<li>
+           /* $singleData .= "<li id='" . $malestudent->studentid . "'>
                                 <div class='stdnInfo'>
                                     <div class='stdnInfoLeft'>
                                         <span class='imageWrap'>
@@ -114,20 +140,35 @@ class Student extends MX_Controller {
                                         <p class='roll'>Gender: $malestudent->gender</p>
                                     </div>
                                     <div class='viewDetails'>
-                                        <a href='" . base_url() . "studentinfo/".$malestudent->studentid."'>View Details</a>
+                                        <a href='" . base_url() . "studentinfo/" . $malestudent->studentid . "'>View Details</a>
                                     </div>
                                 </div>
-                            </li>";
+                            </li>";*/
+
+
+            $singleData .= "<li>
+            <div class='studentChange'>
+                <a href='http://localhost/smartcampus/studentinfo/4'>
+                    <img src='" . base_url() . "uploads/students/" . $malestudent->photo . " '>
+                    <span>
+                            নাম: $malestudent->firstname<br>
+                            রোলঃ: $malestudent->classroll<br>
+                            শ্রেণী: $malestudent->gender
+                    </span>
+                    </a>
+            </div>
+        </li>";
         }
-        
-        $studentPara = "<p>Toatal:".$total.", Male:".$male.", Female:".$female."</p>";
+
+        //$studentPara = "<div class='col-lg-12 countresult'><p style='color:#003a6a; text-align: right; float: right; width:100%;'><b>মোট:  " . $total .  ",  ছাত্র:  " . $male .  ",  ছাত্রী:  " . $female .  "</b><br /></p>";
+        $studentCounter = "<b>মোট:  " . $total . ",  ছাত্র:  " . $male . ",  ছাত্রী:  " . $female . "</b>";
         if ($singleData) {
             $this->status['status'] = 1;
             $this->status['msg'] = $singleData;
-            $this->status['stdcount'] = $studentPara;
+            $this->status['stdcount'] = $studentCounter;
         } else {
             $this->status['status'] = 0;
-            
+
             $this->status['msg'] = "No Student Found.";
         }
         echo jsonEncode($this->status);

@@ -32,6 +32,11 @@
                         <td><?php echo $student['joindate']; ?></td>
                         <td><?php echo $student['email']; ?></td>
                         <td>
+						<?php if($student['studguardianid']){ ?>
+							<a class="btn btn-success btn-mini" href="editguardian/<?php echo $student['studguardianid']; ?>"><i class="icon icon-thumbs-up"></i></a>
+						<?php }else{ ?>
+                            <a class="btn btn-success btn-mini" href="addnewguardian/<?php echo $student['studentid']; ?>"><i class="icon icon-user"></i></a>
+                        <?php } ?>    
                             <a class="btn btn-success btn-mini" href="editstudent/<?php echo $student['studentid']; ?>"><i class="icon icon-edit"></i></a>
 							<a onclick="deletestudent(<?php echo $student['studentid']; ?>)" class="btn btn-danger btn-mini" href="javascript:void(0)"><i class="icon icon-remove"></i></a>
                         </td>

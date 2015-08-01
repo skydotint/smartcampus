@@ -65,6 +65,7 @@ class Photos extends CI_Controller {
 
             $this->records = array(
                 'galleryid' => $this->input->post('galleryid', true),
+                'title' => $this->input->post('title', true),
                 'photo' => $data['file_name'],
                 'isActive' => 1
             );
@@ -98,6 +99,8 @@ class Photos extends CI_Controller {
     }
 	
 	 public function editphotoajax() {
+		$this->id = $this->input->post('photoid', true);
+		$this->where = array('photoid' => $this->id);
 		$config['upload_path'] = "uploads/photos/";
 		$config['allowed_types'] = "gif|jpg|jpeg|png";
 		$config['max_size'] = "5000";
@@ -106,19 +109,21 @@ class Photos extends CI_Controller {
 		//$this->load->library('upload', $config);
 		$this->upload->initialize($config);
 		if (!$this->upload->do_upload('photo')) {
-			echo $this->upload->display_errors();
+			//echo $this->upload->display_errors();
+			$this->records = array(
+			'galleryid' => $this->input->post('galleryid', true),
+			'title' => $this->input->post('title', true),
+			'isActive' => 1
+		);
 		} else {
 		$data = $this->upload->data();
-		
-		$this->id = $this->input->post('photoid', true);
-		$this->where = array('photoid' => $this->id);
-		//var_dump($this->where);
-		//exit;
 		$this->records = array(
 			'galleryid' => $this->input->post('galleryid', true),
+			'title' => $this->input->post('title', true),
 			'photo' => $data['file_name'],
 			'isActive' => 1
 		);
+		}
 
 		$this->results = $this->common_model->updateRecords($this->common_model->_photos, $this->records, $this->where);
 		if ($this->results == 1) {
@@ -129,7 +134,7 @@ class Photos extends CI_Controller {
 			$this->status['msg'] = "Something went wrong when saving the file, please try again.";
 		}
 		echo jsonEncode($this->status);
-		}
+	
 }
 
 	public function deletephotoajax() {
@@ -156,19 +161,4 @@ class Photos extends CI_Controller {
         /* ajax response */
         echo jsonEncode($this->status);
     }
-
-    //Create Thumbnail function
-    function _createThumbnail($filename) {
-        $config['image_library'] = "gd2";
-        $config['source_image'] = "uploads/" . $filename;
-        $config['create_thumb'] = TRUE;
-        $config['maintain_ratio'] = TRUE;
-        $config['width'] = "80";
-        $config['height'] = "80";
-        $this->load->library('image_lib', $config);
-        if (!$this->image_lib->resize()) {
-            echo $this->image_lib->display_errors();
-        }
-    }
-
 }

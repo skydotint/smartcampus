@@ -14,7 +14,8 @@
                             <input class="input-xlarge focused" name="firstname" type="text">
                             <input class="input-xlarge focused" name="userid" type="hidden" value="<?php echo $this->ion_auth->logged_in(); ?>">
 							<?php foreach ($users as $user) { ?>
-						   <input class="input-xlarge focused" name="teacheruserid" type="hidden" value="<?php echo $user['id'] + 1; ?>">
+						   <input class="input-xlarge focused" name="teacheruserid" type="hidden" value="<?php echo $user['username'] + 1; ?>">
+						   <input class="input-xlarge focused" name="id" type="hidden" value="<?php echo $user['id'] + 1; ?>">
 							<?php } ?>
 						</div>
                     </div>
@@ -105,7 +106,7 @@
                     <div class="control-group">
                         <label class="control-label" for="focusedInput">Date of Birth</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="birthdate" type="text">
+                            <input class="input-xlarge focused datepicker" name="birthdate" type="text">
                         </div>
                     </div>
                     <div class="control-group">
@@ -117,7 +118,7 @@
                     <div class="control-group">
                         <label class="control-label" for="focusedInput">Join Date</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="joindate" type="text">
+                            <input class="input-xlarge focused datepicker" name="joindate" type="text">
                         </div>
                     </div>
 					

@@ -16,7 +16,7 @@
                             <div class="control-group">
                                 <label class="control-label" for="focusedInput">Published Date </label>
                                 <div class="controls">
-                                    <input class="input-xlarge focused" name="publishdate" type="text">
+                                    <input class="input-xlarge focused datepicker" name="publishdate" type="text">
                                 </div>
                             </div>
                             <div class="span12" id="content">

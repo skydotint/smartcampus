@@ -48,6 +48,7 @@ class Common_model extends CI_Model {
 	public $_counter_ips = 'counter_ips';
     public $_counter_values = 'counter_values';
     public $_users_groups = 'users_groups';
+    public $_mediauploads = 'mediauploads';
 
     /**
      * @package:EasyTask
@@ -126,31 +127,21 @@ class Common_model extends CI_Model {
     }
 	
 	
-	public function getRecordsWithPagerwhere($table, $where, $limit, $start, $option) {
-		$this->db->limit($limit, $start);
-		
-		if (!empty($where))
-            $query = $this->db->get_where($table, $where);
-        else
-			$query = $this->db->get($table);
-
+	public function getAllRecordsWhereWithPager($table, $limit, $start, $where) {
+        $this->db->limit($limit, $start);
+        $query =  $this->db->get_where($table, $where);
         if ($query->num_rows() > 0) {
-
-            if ($option == "all") {
-
-                foreach ($query->result() as $rows) {
-
-                    $data[] = $rows;
-                }
-            } else {
-
-                $data = $query->row_array();
+            foreach ($query->result() as $row) {
+                $data[] = $row;
             }
-
             return $data;
-        } else
-            return false;
-
+        }
+        return false;
+        /*$sql = $this->db->get_where($table, $where);
+        foreach ($sql->result() as $rows) {
+            $data = $sql->result();
+        }
+        return $data;*/
     }
 	
 

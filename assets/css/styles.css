@@ -387,3 +387,5 @@ text-align:center;
 #ui-datepicker-div a.ui-datepicker-prev { float: left;}
 #ui-datepicker-div a.ui-datepicker-next { float: right;}
 .ui-datepicker-header  { text-align: center; font-size: 12px; color: #fff;}
+.mediaupload{height: 100px; width: 100px; float:left;}
+.mediaupload img{width:100%;}	

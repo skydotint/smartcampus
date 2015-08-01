@@ -24,6 +24,7 @@ class Outlet_Students extends CI_Controller {
         $this->load->model("guardians_model");
         $this->load->model("classes_model");
         $this->load->model("sections_model");
+        $this->load->model("departments_model");
         $this->load->library(array('ion_auth', 'form_validation', 'upload'));
 		$this->load->library("pagination");
 
@@ -97,6 +98,7 @@ class Outlet_Students extends CI_Controller {
         $this->data['user'] = $this->ion_auth->user()->row();
         $this->data['classes'] = $this->classes_model->getClassess();
         $this->data['sections'] = $this->sections_model->getSections();
+        $this->data['departments'] = $this->departments_model->getDepartments();
 		$this->data['users'] = $this->users_model->getLastuserid();
         $this->load->view('admintheme/header', $this->data);
         $this->load->view('admintheme/sidebar');
@@ -133,7 +135,6 @@ class Outlet_Students extends CI_Controller {
             $data = $this->upload->data();
 
             $this->records = array(
-                'studentid' => $this->input->post('studentid', true),
                 'studentuserid' => $this->input->post('studentuserid', true),
                 'firstname' => $this->input->post('firstname', true),
                 'middlename' => $this->input->post('middlename', true),
@@ -160,8 +161,21 @@ class Outlet_Students extends CI_Controller {
                 'enrollmentstatus' => $this->input->post('enrollmentstatus', true),
                 'isActive' => 1
             );
+			$this->urecords = array(
+                'username' => $this->input->post('studentuserid', true),
+                'created_on' => NOW(),
+                'first_name' => $this->input->post('firstname', true),
+				'phone' => $this->input->post('sphone', true),
+				'last_name' => $this->input->post('lastname', true)
+            ); 
+			$this->ugrpuprecords = array(
+                'user_id' => $this->input->post('id', true),
+                'group_id' => 3
+            ); 
 
             $this->results = $this->common_model->insertRecords($this->common_model->_students, $this->records);
+			$this->results = $this->common_model->insertRecords($this->common_model->_usersTable, $this->urecords);
+            $this->results = $this->common_model->insertRecords($this->common_model->_users_groups, $this->ugrpuprecords);
 
             if ($this->results) {
                 $this->status['status'] = 1;
@@ -178,6 +192,7 @@ class Outlet_Students extends CI_Controller {
         $this->data['user'] = $this->ion_auth->user()->row();
         $this->data['classes'] = $this->classes_model->getClassess();
         $this->data['sections'] = $this->sections_model->getSections();
+		$this->data['departments'] = $this->departments_model->getDepartments();
         $this->id = $this->uri->segment(2);
         $this->where = array('studentid' => $this->id);
 		$join = $this->db->join('classes', 'students.class = classes.classid');

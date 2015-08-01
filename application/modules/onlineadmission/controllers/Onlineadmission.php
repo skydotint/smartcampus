@@ -53,7 +53,7 @@ class Onlineadmission extends MX_Controller {
         if (!$this->upload->do_upload('photo')) {
             echo $this->upload->display_errors();
         } else {
-            $data = $this->upload->data();
+        $data = $this->upload->data();
 		$this->records = array(
 		'namebangla' => $this->input->post('namebangla', true),
 		'nameenglish' => $this->input->post('nameenglish', true),

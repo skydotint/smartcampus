@@ -964,6 +964,20 @@ function fileIcon($filename) {
         return $html;
 }
 
+function makeGrade($score) { //just a rewrite of your own code, exactly the same purpose
+    if($score>=70)
+        return 'A';
+    if($score>=60)
+        return 'B';
+    if($score>=50)
+        return 'C';
+    if($score>=45)
+        return 'D';
+    if($score>=40)
+        return 'E';
+    return 'F';
+}
+
 /* End of file helper.php */
 /* Location: ./application/helpers/helper.php */
 ?>

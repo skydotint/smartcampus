@@ -86,7 +86,8 @@ $route['editwebpage/(:num)'] = 'webpages/editpageform';
 $route['editwebpageajax'] = 'webpages/editwebpageajax';
 $route['deletepage/(:num)'] = 'webpages/deletewebpageajax';
 
-// Students
+
+
 $route['viewstudents'] = 'outlet_students/index';
 $route['viewallstudents'] = 'outlet_students/viewallstudents';
 $route['viewxstudents'] = 'outlet_students/viewxstudents';
@@ -178,6 +179,7 @@ $route['viewresults'] = 'results/viewresults';
 $route['viewresultajax'] = 'results/viewresultajax';
 $route['updateresult'] = 'results/updateresult';
 $route['resultchangeajax'] = 'results/resultchangeajax';
+$route['singlestudentresult'] = 'results/singlestudentresult';
 
 
 // Sections
@@ -268,6 +270,8 @@ $route['deletebook/(:num)'] = 'books/deletebookajax';
 $route['editbook/(:num)'] = 'books/editbookform';
 $route['editbookajax'] = 'books/editbookajax';
 
+
+
 // Gallerys
 $route['viewgalleries'] = 'galleries/index';
 $route['addnewgallery'] = 'galleries/addgalleryform';
@@ -275,6 +279,14 @@ $route['addgalleryajax'] = 'galleries/addgalleryajax';
 $route['deletegallery/(:num)'] = 'galleries/deletegalleryajax';
 $route['editgallery/(:num)'] = 'galleries/editgalleryform';
 $route['editgalleryajax'] = 'galleries/editgalleryajax';
+
+// Mediauploads
+$route['viewmediauploads'] = 'mediauploads/index';
+$route['addnewmediaupload'] = 'mediauploads/addmediauploadform';
+$route['addmediauploadajax'] = 'mediauploads/addmediauploadajax';
+$route['deletemediaupload/(:num)'] = 'mediauploads/deletemediauploadajax';
+$route['editmediaupload/(:num)'] = 'mediauploads/editmediauploadform';
+$route['editmediauploadajax'] = 'mediauploads/editmediauploadajax';
 
 // Notice
 $route['viewnotices'] = 'notices/index';

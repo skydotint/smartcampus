@@ -289,6 +289,39 @@ class Results extends CI_Controller {
         }
         echo jsonEncode($this->status);
     }
+    
+     public function singlestudentresult() {
+        error_reporting(0);
+        
+        
+        
+        $this->data['title'] = "My Result";
+        $this->data['classes'] = $this->classes_model->getClassess();
+        $this->data['sections'] = $this->sections_model->getSections();
+        $this->data['teachers'] = $this->teachers_model->getTeachers();
+        $this->data['subjects'] = $this->subjects_model->getSubjects();
+        $this->data['studygroups'] = $this->subjects_model->getStudyGroups();
+        $this->data['days'] = $this->subjects_model->getDays();
+        $this->data['periods'] = $this->subjects_model->getPeriods();
+        $this->data['exams'] = $this->classes_model->getExams();
+        $this->data['user'] = $this->ion_auth->user()->row();
+        
+        $reswhere = array( 'resstudentid' => $this->data['user']->id , 'exam' => 1);
+        
+        $join = $this->db->join('subjects', 'subjects.subjectid = results.subjects');
+        $this->data['results'] = $this->common_model->getAllRecordsWhere($this->common_model->_results,$join, $reswhere , all);
+        
+        //getRecordsjoinwhere($table, $join, $where, $option)
+        $this->load->view('admintheme/header', $this->data);
+        $this->load->view('admintheme/sidebar');
+        $this->load->view('results/singlestudentresult', $this->data);
+        $this->load->view('admintheme/footer');
+        
+        
+
+         
+     }
+    
 
 
 }

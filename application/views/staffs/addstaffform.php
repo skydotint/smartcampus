@@ -13,6 +13,10 @@
                         <div class="controls">
                             <input class="input-xlarge focused" name="firstname" type="text">
                             <input class="input-xlarge focused" name="userid" type="hidden" value="<?php echo $this->ion_auth->logged_in(); ?>">
+							<?php foreach ($users as $user) { ?>
+						   <input class="input-xlarge focused" name="staffuserid" type="hidden" value="<?php echo $user['username'] + 1; ?>">
+						   <input class="input-xlarge focused" name="id" type="hidden" value="<?php echo $user['id'] + 1; ?>">
+							<?php } ?>
                         </div>
                     </div>
                     <div class="control-group">

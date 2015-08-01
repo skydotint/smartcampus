@@ -1,8 +1,30 @@
 jQuery(document).ready(function ($) {
-	
-	$('.datepicker').datepicker({
-       // format: "dd/mm/yyyy"
-    });
+        $(function() {
+            $(".datepicker").datepicker();
+            $(".uniform_on").uniform();
+            $(".chzn-select").chosen();
+            $('.textarea').wysihtml5();
+
+            $('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+                var $total = navigation.find('li').length;
+                var $current = index+1;
+                var $percent = ($current/$total) * 100;
+                $('#rootwizard').find('.bar').css({width:$percent+'%'});
+                // If it's the last tab then hide the last button and show the finish instead
+                if($current >= $total) {
+                    $('#rootwizard').find('.pager .next').hide();
+                    $('#rootwizard').find('.pager .finish').show();
+                    $('#rootwizard').find('.pager .finish').removeClass('disabled');
+                } else {
+                    $('#rootwizard').find('.pager .next').show();
+                    $('#rootwizard').find('.pager .finish').hide();
+                }
+            }});
+            $('#rootwizard .finish').click(function() {
+                alert('Finished!, Starting over!');
+                $('#rootwizard').find("a[href*='tab1']").trigger('click');
+            });
+        });
 	
     /**
      * New Web Page Adder
@@ -2703,4 +2725,84 @@ function deletewebpage(id) {
 
             },
         });
+    });
+	
+		/**
+     * New mediauploads Adder
+     */
+    $('#addmediauploadbtn').click(function (e) {
+        e.preventDefault();
+        var form = $('#addmediauploadForm');
+        var formData = new FormData($(form)[0]);
+        var url = baseurl + 'addmediauploadajax';
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: url,
+            data: formData,
+            async: false,
+            success: function (data) {
+                $("#successmsg").html(data.msg + " Successfully Added").show().delay(3000).fadeOut();
+            },
+            error: function (data) {
+                $("#errormsg").html(data.msg + " failed to add").show().delay(3000).fadeOut();
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+        return false;
+    });
+	
+	function deletemediaupload(id) {
+    bootbox.confirm("Are you sure?", function (result) {
+        if (result == true) {
+            //alert(id);
+
+            var url = baseurl + 'deletemediaupload/' + id;
+            $.ajax({
+                type: 'GET',
+                dataType: 'JSON',
+                url: url,
+                data: id,
+                success: function (data) {
+                    //console.log(data.status);
+                    $("#successmsg").html(data.msg).show().delay(3000).fadeOut();
+                    $("#viewmediauploads").load(window.location + " #viewmediauploads");
+                },
+                error: function (data) {
+                    $("#errormsg").html(data.msg + " Failed to Delete").show().delay(3000).fadeOut();
+                }
+            });
+        } else {
+            return false;
+        }
+    });
+}
+
+/**
+     * Edit mediauploads
+     */
+    $('#editmediauploadbtn').click(function (e) {
+        e.preventDefault();
+        var form = $('#editmediauploadForm');
+        var formData = new FormData($(form)[0]);
+        var url = baseurl + 'editmediauploadajax';
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: url,
+            data: formData,
+            success: function (data) {
+                $("#successmsg").html(data.msg + " Successfully Updated").show().delay(3000).fadeOut();
+				$("#deptreload").load(window.location + " #deptreload");
+            },
+            error: function (data) {
+                $("#errormsg").html(data.msg + " Failed To Update").show().delay(3000).fadeOut();
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+        return false;
     });

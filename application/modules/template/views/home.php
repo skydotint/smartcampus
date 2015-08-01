@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
                     <a href="<?php echo base_url(); ?>onlineadmission"><button class="admission">অনলাইন ভর্তির আবেদন</button></a>
-                    <a href="<?php echo base_url(); ?>notice"><button class="formDownload">ভর্তির ফর্ম ডাউনলোড</button></a>
+                    <a href="<?php echo base_url(); ?>download"><button class="formDownload">ভর্তির ফর্ম ডাউনলোড</button></a>
                     <a href="<?php echo base_url(); ?>academiccouncill"><button class="managingCommettee">পরিচালনা পর্ষদ</button></a>
                     <div class="clear"></div>
 

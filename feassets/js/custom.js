@@ -1,7 +1,7 @@
-
 jQuery(document).ready(function ($) {
     $('#studentSearch').submit(function (e) {
         e.preventDefault();
+        $(".countresult").hide();
         var error = 0;
         var loc = window.location.href;
         var url = baseurl + 'searchstudent';
@@ -18,8 +18,9 @@ jQuery(document).ready(function ($) {
                 if(data.status == 1){
                     $('ul.allstdRes').remove();
                     $('ul.pagination').remove();
-                    alert(data.stdcount);
-                    $("#studentSearch").after("<ul class='allstdRes'>" + data.msg + "</ul>");;
+                    //alert(data.stdcount);
+                    $(".singlePageContent h1.blue span").html(data.stdcount);
+                    $("#studentSearch").after("<ul class='allstdRes allstdResChange'>" + data.msg + "</ul>");;
                 }else{
                     $("#errormsg").html(data.msg + " ").show().delay(3000).fadeOut();
                 }
@@ -30,11 +31,7 @@ jQuery(document).ready(function ($) {
                // 
             },
         });
-       
-
-
     });
-
 
     $('#mobnav-btn').click(
             function () {
@@ -211,6 +208,7 @@ jQuery(document).ready(function ($) {
                 dataType: 'json',
                         success: function (data) {
                             $("#successmsg").html(data.msg + "  ").show().delay(3000).fadeOut();
+                            $('#emailsendform')[0].reset();
                         },
                 error: function (data) {
                     $("#errormsg").html(data.msg + " ").show().delay(3000).fadeOut();

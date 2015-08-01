@@ -48,8 +48,10 @@
                         <input name="addonlineapplicantbtn" type="submit" class="btn btn-primary" value="প্রেরণ করুন" />
                     </form>	
 
+
                     <div class="googlemap">
-                        <iframe src="<?php echo $setting['googlemap']; ?>" width="95%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> 
+                    	<p>ঠিকানা : <?php echo $setting['instituteaddress']; ?></p>
+                        <p><iframe src="<?php echo $setting['googlemap']; ?>" width="95%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> </p>
                     </div>
 
                 </div>

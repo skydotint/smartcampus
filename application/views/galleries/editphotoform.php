@@ -21,6 +21,12 @@
 						</div>
                     </div>
 					
+					<div class="control-group">
+                        <label class="control-label" for="focusedInput">Title </label>
+                        <div class="controls">
+                            <input class="input-xlarge focused" name="title" value="<?php echo $photos['title']; ?>" type="text">
+                        </div>
+                    </div>
 					
 					 <div class="control-group">
                         <label for="focusedInput" class="control-label">Photo</label>

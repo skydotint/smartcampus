@@ -117,17 +117,7 @@ $('.ticker ul').carouFredSel({
 
         /* $("ul#ticker02").liScroll({travelocity: 15});*/
 
-	//$('.mainMenu a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('activeMenu');
-	
-	var url = window.location.pathname, 
-        urlRegExp = new RegExp(url.replace(/\/$/,'') + "$");
-
-        $('.sf-menu a').each(function(){
-            if(urlRegExp.test(this.href.replace(/\/$/,''))){
-                $(this).addClass('activeMenu');
-                $(this).closest('ul').parent('li').addClass('pActive');
-            }
-        });
+        
 
     });
 </script>

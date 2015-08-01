@@ -19,7 +19,7 @@
 					<div class="control-group">
                         <label class="control-label" for="focusedInput">Published Date</label>
                         <div class="controls">
-                            <input class="input-xlarge focused" name="publishdate" value="<?php echo $notices['publishdate']; ?>" type="text"> 
+                            <input class="input-xlarge focused datepicker" name="publishdate" value="<?php echo $notices['publishdate']; ?>" type="text"> 
                         </div>
                     </div>
 					
